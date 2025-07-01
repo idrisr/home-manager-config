@@ -15,6 +15,7 @@
     # ../modules/rofi
     ../modules/vscode
     ../modules/xdg
+    ../modules/yt-dlp
     ../modules/zathura
     ../modules/zoxide
   ];

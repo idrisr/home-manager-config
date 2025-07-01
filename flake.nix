@@ -15,6 +15,10 @@
       url = "github:idrisr/visualpreview";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rofi = {
+      url = "github:idrisr/rofi-picker/haskell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
@@ -31,6 +35,7 @@
           (import ./modules/tikzit)
           (import ./modules/kdenlive)
           (import ./modules/brave)
+          inputs.rofi.overlays.all
         ];
       };
 

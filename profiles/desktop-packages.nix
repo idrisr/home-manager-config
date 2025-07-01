@@ -1,10 +1,10 @@
 pkgs:
 with pkgs; [
-  opencode
-  rustdesk
   age
   audioPreview
   booknote
+  books
+  booksDesktopItem
   brave
   code2prompt
   cryptsetup
@@ -13,13 +13,19 @@ with pkgs; [
   libreoffice
   mdtopdf
   minicom
-  nixfmt-classic
   mksession
   newcover
+  nixfmt-classic
   ocrmypdf
+  opencode
+  papers
+  papersDesktopItem
   pdftc
   pipe-rename
+  rustdesk
   srtcpy
+  techtalk
+  techtalkDesktopItem
   topdf
   transcribe
   videoChapter
