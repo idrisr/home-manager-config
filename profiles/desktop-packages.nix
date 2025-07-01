@@ -1,0 +1,29 @@
+pkgs:
+with pkgs; [
+  opencode
+  rustdesk
+  age
+  audioPreview
+  booknote
+  brave
+  code2prompt
+  cryptsetup
+  ffmpeg
+  keepassxc
+  libreoffice
+  mdtopdf
+  minicom
+  nixfmt-classic
+  mksession
+  newcover
+  ocrmypdf
+  pdftc
+  pipe-rename
+  srtcpy
+  topdf
+  transcribe
+  videoChapter
+  vttclean
+  yt-dlp
+  zotero
+]
