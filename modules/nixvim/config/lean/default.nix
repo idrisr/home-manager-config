@@ -1,0 +1,1 @@
+{ plugins.lean.enable = true; }

@@ -19,6 +19,14 @@
       url = "github:idrisr/rofi-picker/haskell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zettel = {
+      url = "github:idrisr/zettel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
@@ -36,17 +44,24 @@
           (import ./modules/kdenlive)
           (import ./modules/brave)
           inputs.rofi.overlays.all
+          inputs.zettel.overlays.zettel
         ];
       };
 
     in {
       homeConfigurations."hippoid" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ./hyprland-support.nix ];
+        modules = [
+          ./home.nix
+          inputs.nixvim.homeManagerModules.nixvim
+
+          ./modules/nixvim/config
+
+        ];
       };
 
       homeManagerModules.base = {
-        imports = [ ./home.nix ./hyprland-support.nix ];
+        imports = [ ./home.nix inputs.nixvim.homeManagerModules.nixvim ];
       };
     };
 }

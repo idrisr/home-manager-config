@@ -1,0 +1,1 @@
+{ plugins.emmet = { enable = true; }; }
