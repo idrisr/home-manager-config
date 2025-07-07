@@ -1,3 +1,4 @@
+{pkgs, ...}:
 {
   plugins = {
     lspsaga.enable = false;
@@ -19,7 +20,11 @@
         lua_ls.enable = true;
         gopls.enable = true;
         marksman.enable = true;
-        nil_ls.enable = true;
+        nil_ls = {
+          enable = true;
+          settings.nix.flake.autoArchive = true;
+        };
+
         # ocamlls.enable = true;
         prolog_ls.enable = false;
         # purescriptls.enable = true;

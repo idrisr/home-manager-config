@@ -76,8 +76,8 @@
         end
       '';
       workspaces = [{
-      path = "/home/hippoid/roam-export";
-      name = "roam";
+        path = "/home/hippoid/roam-export";
+        name = "roam";
       }];
       note_id_func = ''
         function(title)

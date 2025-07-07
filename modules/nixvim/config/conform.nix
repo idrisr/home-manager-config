@@ -1,3 +1,4 @@
+{pkgs, lib, ...}:
 {
   plugins = {
     lint = {
@@ -31,7 +32,7 @@
           jsonc = [ "fixjson" ];
           json = [ "fixjson" ];
           lua = [ "stylua" ];
-          nix = [ "nixfmt" ];
+          nix = [ "nixpkgs-fmt" ];
           ocaml = [ "ocamlformat" ];
           purescript = [ "purescriptls" ];
           python = [ "isort" "black" ];
@@ -41,6 +42,11 @@
           typescript = [ "prettierd" ];
           "*" = [ "trim_newlines" "trim_whitespace" ];
         };
+            formatters = {
+      nixpkgs-fmt= {
+        command = lib.getExe pkgs.nixpkgs-fmt;
+      };
+      };
       };
     };
   };
