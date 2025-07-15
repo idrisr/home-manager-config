@@ -61,9 +61,8 @@
 
       modules = [
         ./home.nix
-        inputs.nixvim.homeManagerModules.nixvim
         ./modules/nixvim/config
-        inputs.stylix.homeModules.stylix
+        inputs.nixvim.homeManagerModules.nixvim
       ];
     in
     {
@@ -80,9 +79,7 @@
 
         "headless" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = modules ++ [
-            { profile.dailydrive.enable = false; }
-          ];
+          modules = modules;
 
           extraSpecialArgs = {
             inherit inputs;
