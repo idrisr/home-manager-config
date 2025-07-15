@@ -1,11 +1,11 @@
 # nixos module entry point to home-manager
-{ config, lib, ... }:
-let cfg = config.dailydrive.profile;
-in {
-  imports = [ ./profiles/base.nix ./profiles/desktop.nix ];
+{ config, lib, graphical, ... }:
+{
+  imports = [
+    ./profiles/base.nix
+  ] ++ lib.optionals graphical [ ./profiles/desktop.nix ];
 
   config = {
-    profile.dailydrive.enable = true;
     programs.home-manager.enable = true;
   };
 

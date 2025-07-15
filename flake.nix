@@ -74,6 +74,7 @@
 
           extraSpecialArgs = {
             inherit inputs;
+            graphical = true;
           };
         };
 
@@ -85,6 +86,7 @@
 
           extraSpecialArgs = {
             inherit inputs;
+            graphical = false;
           };
         };
       };
