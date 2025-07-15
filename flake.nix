@@ -59,31 +59,40 @@
         config.allowUnfree = true;
       };
 
+      modules = [
+        ./home.nix
+        inputs.nixvim.homeManagerModules.nixvim
+        ./modules/nixvim/config
+        inputs.stylix.homeModules.stylix
+      ];
     in
     {
-      homeConfigurations."hippoid" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-          inputs.nixvim.homeManagerModules.nixvim
-          ./modules/nixvim/config
-          inputs.stylix.homeModules.stylix
-        ];
+      homeConfigurations = {
+        "graphical" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = modules;
 
-        extraSpecialArgs = {
-          inherit inputs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+
+        "headless" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = modules ++ [
+            { profile.dailydrive.enable = false; }
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
       };
 
       overlays.default = overlays;
 
       homeManagerModules.base = {
-        imports = [
-          ./home.nix
-          inputs.nixvim.homeManagerModules.nixvim
-          ./modules/nixvim/config
-          inputs.stylix.homeModules.stylix
-        ];
+        imports = modules;
       };
     };
 }
