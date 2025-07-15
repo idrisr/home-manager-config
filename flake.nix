@@ -37,7 +37,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
 
@@ -65,6 +65,7 @@
         inputs.nixvim.homeManagerModules.nixvim
       ];
     in
+    rec
     {
       homeConfigurations = {
         "graphical" = home-manager.lib.homeManagerConfiguration {
@@ -89,6 +90,11 @@
       };
 
       overlays.default = overlays;
+      packages.${system} = {
+        headless = homeConfigurations.headless.activationPackage;
+        graphical = homeConfigurations.graphical.activationPackage;
+      };
+
 
       homeManagerModules.base = {
         imports = modules;

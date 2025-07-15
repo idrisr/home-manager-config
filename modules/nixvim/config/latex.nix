@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   plugins.vimtex = {
     enable = true;

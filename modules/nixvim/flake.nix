@@ -8,7 +8,7 @@
     zettel.url = "github:idrisr/zettel";
   };
 
-  outputs = { nixvim, flake-utils, nixpkgs, zettel, ... }:
+  outputs = { graphical, nixvim, flake-utils, nixpkgs, zettel, ... }:
     let
       system = flake-utils.lib.system.x86_64-linux;
       nixvimLib = nixvim.lib.${system};
@@ -21,10 +21,13 @@
         inherit system;
         inherit pkgs;
         module = import ./config;
-        extraSpecialArgs = { };
+        extraSpecialArgs = {
+          inherit graphical;
+        };
       };
       nvim = nixvim'.makeNixvimWithModule nixvimModule;
-    in {
+    in
+    {
       checks.${system}.default =
         nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
       packages.${system}.default = nvim;

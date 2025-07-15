@@ -1,1 +1,2 @@
-{ plugins.lean.enable = true; }
+# { plugins.lean.enable = true; }
+{ }

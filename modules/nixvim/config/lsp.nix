@@ -8,10 +8,10 @@
       servers = {
         asm_lsp.enable = true;
         bashls.enable = true;
-        ccls.enable = true;
+        ccls.enable = false;
         cssls.enable = true;
         hls = {
-          enable = true;
+          enable = false;
           installGhc = false;
         };
         html.enable = true;

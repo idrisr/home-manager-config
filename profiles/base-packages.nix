@@ -8,7 +8,6 @@ with pkgs; [
   jq
   ncdu
   pipe-rename
-  smem
   sysz
   tmux
   trash-cli

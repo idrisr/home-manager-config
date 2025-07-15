@@ -4,8 +4,10 @@ let
     let
       j = map builtins.readFile files;
       k = builtins.concatStringsSep "\n" ([ " " ] ++ j);
-    in k;
-in {
+    in
+    k;
+in
+{
   programs.nixvim = {
     enable = true;
     imports = [
