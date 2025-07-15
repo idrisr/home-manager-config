@@ -12,6 +12,7 @@
     ../modules/tmux
     ../modules/vifm
     ../modules/zsh
+    ../modules/stylix
   ];
 
   config = {

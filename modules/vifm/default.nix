@@ -36,6 +36,7 @@ in {
           filextype *.pdf,*.epub ${pkgs.zathura}/bin/zathura %c %i &, apvlv %c, xpdf %c
           filextype *.vv ${pkgs.virt-viewer}/bin/remote-viewer %c &
           filextype *.rnote ${pkgs.rnote}/bin/rnote %c &
+
           fileviewer <video/*> ${vp} video %pw %ph %px %py %c %N %pc ${vp} clear
           fileviewer {*.epub,*.mobi,*.azw,*.azw[0-9]},<application/epub+zip>,<application/x-mobipocket-ebook>,<application/vnd.amazon.ebook> ${vp} epub %pw %ph %px %py %c %N %pc ${vp} clear
           fileviewer <font/*> ${vp} font %pw %ph %px %py %c %N %pc ${vp} clear
@@ -44,7 +45,7 @@ in {
           fileviewer {*.mp3, *.m4a} ${pkgs.audioPreview}/bin/audioPreview
           fileviewer {*.pdf} ${vp} pdf %pw %ph %px %py %c %N %pc ${vp} clear, ${pkgs.poppler_utils}/bin/pdfinfo, ${pkgs.pdftc}/bin/pdftc
 
-          nnoremap L :!${pkgs.srtcpy}/bin/srtcpy %f | ${pkgs.xclip}/bin/xclip -selection clipboard <cr>
+          nnoremap L :!${pkgs.srtcpy}/bin/srtcpy %f | ${lib.getExe pkgs.wayclip}<cr>
           nnoremap w :view<cr>
           nnoremap sv :source $MYVIFMRC<cr>
           nnoremap s :sort <cr>

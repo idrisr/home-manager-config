@@ -1,4 +1,4 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 {
   plugins = {
     lint = {
@@ -36,17 +36,21 @@
           ocaml = [ "ocamlformat" ];
           purescript = [ "purescriptls" ];
           python = [ "isort" "black" ];
+          sql = [ "sqlfluff" ];
           terraform = [ "terraform_fmt" ];
           tex = [ "latexindent" ];
           text = [ ];
           typescript = [ "prettierd" ];
           "*" = [ "trim_newlines" "trim_whitespace" ];
         };
-            formatters = {
-      nixpkgs-fmt= {
-        command = lib.getExe pkgs.nixpkgs-fmt;
-      };
-      };
+        formatters = {
+          nixpkgs-fmt = {
+            command = lib.getExe pkgs.nixpkgs-fmt;
+          };
+          sqlfluff = {
+            command = lib.getExe pkgs.sqlfluff;
+          };
+        };
       };
     };
   };

@@ -2,18 +2,26 @@
   imports = [
     ./base.nix
     ../modules/alacritty
+    ../modules/firefox
     ../modules/ctags
     ../modules/github
     ../modules/haskeline
     ../modules/kitty
+    ../modules/flameshot
+    ../modules/hyprland
+    ../modules/hyprcursor
     ../modules/lsd
+    ../modules/obs
+    ../modules/mpv
     ../modules/opentablet
     ../modules/pandoc
     ../modules/polybar
+    ../modules/pipewire
     ../modules/qt
     ../modules/qutebrowser
     # ../modules/rofi
     ../modules/vscode
+    ../modules/waybar
     ../modules/xdg
     ../modules/yt-dlp
     ../modules/zathura

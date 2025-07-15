@@ -1,4 +1,5 @@
 { ... }: {
+  # stylix.targets.kitty.enable = false;
   programs.kitty = {
     enable = true;
     settings = {
@@ -7,6 +8,7 @@
       update_check_interval = 0;
       sync_to_monitor = "no";
       input_delay = 1;
+      # background_opacity = 0.8;
     };
   };
 }

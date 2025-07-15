@@ -2,15 +2,12 @@
 { config, lib, ... }:
 let cfg = config.dailydrive.profile;
 in {
-  imports = [
-    ./profiles/base.nix
-    ./profiles/desktop.nix
-  ];
+  imports = [ ./profiles/base.nix ./profiles/desktop.nix ];
 
-  config = { profile.dailydrive.enable = true;
-  programs.home-manager.enable = true;
-
-};
+  config = {
+    profile.dailydrive.enable = true;
+    programs.home-manager.enable = true;
+  };
 
   options = {
     profile = {

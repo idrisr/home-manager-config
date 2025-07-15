@@ -8,7 +8,7 @@ _: prev: {
     installPhase = ''
       mkdir -p "$out/bin"
       cp ${prev.brave}/bin/brave $out/bin/
-      wrapProgram $out/bin/brave --add-flags "--password-store=basic" --add-flags "--disable-features=PasswordManager"
+      wrapProgram $out/bin/brave --add-flags "--password-store=basic" --add-flags "--disable-features=PasswordManager" --add-flags "--force-device-scale-factor=2.0"
     '';
   };
 }

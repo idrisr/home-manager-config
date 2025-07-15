@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   plugins = {
     lspsaga.enable = false;
@@ -25,10 +25,9 @@
           settings.nix.flake.autoArchive = true;
         };
 
-        # ocamlls.enable = true;
         prolog_ls.enable = false;
-        # purescriptls.enable = true;
         pyright.enable = true;
+        sqls.enable = true;
         terraformls.enable = true;
         texlab = {
           enable = true;
@@ -46,10 +45,6 @@
                 onEdit = true;
                 onOpenAndSave = true;
               };
-              # forwardSearch = {
-              # executable = "zathura";
-              # args = [ "--synctex-forward" "%l:1:%f" "./build/%n.pdf" ];
-              # };
               symbols.customEnvironments = [
                 {
                   name = "definition";

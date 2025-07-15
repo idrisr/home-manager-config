@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:idrisr/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +27,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zettel = {
       url = "github:idrisr/zettel";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,36 +40,50 @@
   outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
+
+      overlays = [
+        inputs.visualpreview.overlays.visualpreview
+        inputs.nur.overlays.${system}
+        (import ./modules/qrcp "6969")
+        (import ./modules/xournal)
+        (import ./modules/tikzit)
+        (import ./modules/kdenlive)
+        # (import ./modules/brave)
+        inputs.rofi.overlays.all
+        inputs.zettel.overlays.zettel
+      ];
+
       pkgs = import nixpkgs {
         inherit system;
+        inherit overlays;
         config.allowUnfree = true;
-        overlays = [
-          inputs.visualpreview.overlays.visualpreview
-          inputs.nur.overlays.${system}
-          (import ./modules/qrcp "6969")
-          (import ./modules/xournal)
-          (import ./modules/tikzit)
-          (import ./modules/kdenlive)
-          (import ./modules/brave)
-          inputs.rofi.overlays.all
-          inputs.zettel.overlays.zettel
-        ];
       };
 
-    in {
+    in
+    {
       homeConfigurations."hippoid" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
           inputs.nixvim.homeManagerModules.nixvim
-
           ./modules/nixvim/config
-
+          inputs.stylix.homeModules.stylix
         ];
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
 
+      overlays.default = overlays;
+
       homeManagerModules.base = {
-        imports = [ ./home.nix inputs.nixvim.homeManagerModules.nixvim ];
+        imports = [
+          ./home.nix
+          inputs.nixvim.homeManagerModules.nixvim
+          ./modules/nixvim/config
+          inputs.stylix.homeModules.stylix
+        ];
       };
     };
 }

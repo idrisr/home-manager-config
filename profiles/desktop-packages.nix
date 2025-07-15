@@ -6,16 +6,19 @@ with pkgs; [
   books
   booksDesktopItem
   brave
+  claude-code
   code2prompt
   cryptsetup
   ffmpeg
+  kdePackages.krohnkite
   keepassxc
   libreoffice
+  mathpix-snipping-tool
   mdtopdf
   minicom
   mksession
   newcover
-  nixfmt-classic
+  nixpkgs-fmt
   ocrmypdf
   opencode
   papers
@@ -23,13 +26,16 @@ with pkgs; [
   pdftc
   pipe-rename
   rustdesk
+  sqls
   srtcpy
   techtalk
   techtalkDesktopItem
   topdf
   transcribe
   videoChapter
+  visualpreview
   vttclean
   yt-dlp
   zotero
+  pvm
 ]
