@@ -36,6 +36,7 @@
           ocaml = [ "ocamlformat" ];
           purescript = [ "purescriptls" ];
           python = [ "isort" "black" ];
+          rust = [ "rustfmt" ];
           sql = [ "sqlfluff" ];
           terraform = [ "terraform_fmt" ];
           tex = [ "latexindent" ];
@@ -46,6 +47,9 @@
         formatters = {
           nixpkgs-fmt = {
             command = lib.getExe pkgs.nixpkgs-fmt;
+          };
+          rustfmt = {
+            command = lib.getExe pkgs.rustfmt;
           };
           sqlfluff = {
             command = lib.getExe pkgs.sqlfluff;

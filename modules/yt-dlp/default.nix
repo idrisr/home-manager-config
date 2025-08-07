@@ -1,7 +1,6 @@
 {
   config = {
     programs = {
-      freetube.enable = true;
       yt-dlp = {
         enable = true;
         extraConfig = ''
@@ -10,13 +9,15 @@
           --convert-subs srt
         '';
 
-        # --output "%(playlist_index)02d - %(title)s.%(ext)s"
         settings = {
           write-auto-subs = true;
           embed-chapters = true;
           sub-langs = "en";
           downloader = "aria2c";
           downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+          output = ''%(uploader)s-%(title)s-[%(id)s].%(ext)s'';
+          split-chapters = true;
+          restrict-filenames = true;
         };
       };
     };

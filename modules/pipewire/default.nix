@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ helvum easyeffects ]; }
+{ pkgs, ... }: { home.packages = with pkgs; [ helvum easyeffects pulseaudio ]; }

@@ -21,11 +21,11 @@
         "$mod, r, workspace, 4"
         "$mod, t, workspace, 5"
         "$mod, j, cyclenext"
-        "$mod, f, fullscreen"
+        "$mod, f, fullscreen, 1"
         "$mod, l, resizeactive, 40 0"
         "$mod, h, resizeactive, -40 0"
         "$mod, k, swapnext"
-        "$mod, p, exec, wofi --show run"
+        "$mod, p, exec, wofi --show drun"
         "$mod shift, n, exec, flameshot gui"
 
         "$mod shift, b, exec, ${lib.getExe pkgs.qutebrowser}"
@@ -45,18 +45,19 @@
       ];
     };
     extraConfig = ''
-      input {
-          touchpad {
-            natural_scroll = true
+          input {
+              touchpad {
+                natural_scroll = true
+              }
           }
-      }
 
-      general {
-          gaps_in = 2; # inner gaps
-          gaps_out = 4; # outer gaps (to screen edges)
-      }
-      env = XCURSOR_THEME,Bibata-Modern-Classic
-      env = XCURSOR_SIZE,24
+          general {
+              gaps_in = 2; # inner gaps
+              gaps_out = 4; # outer gaps (to screen edges)
+      border_size = 4
+          }
+          env = XCURSOR_THEME,Bibata-Modern-Classic
+          env = XCURSOR_SIZE,24
     '';
   };
 

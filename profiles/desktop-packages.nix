@@ -1,8 +1,8 @@
 pkgs:
 with pkgs; [
   age
-  audioPreview
-  booknote
+  # audioPreview
+  # booknote
   books
   booksDesktopItem
   brave
@@ -14,10 +14,10 @@ with pkgs; [
   keepassxc
   libreoffice
   mathpix-snipping-tool
-  mdtopdf
-  minicom
   mksession
-  newcover
+  # mdtopdf
+  minicom
+  # newcover
   nixpkgs-fmt
   ocrmypdf
   opencode
@@ -25,17 +25,17 @@ with pkgs; [
   papersDesktopItem
   pdftc
   pipe-rename
-  rustdesk
+  # rustdesk
   sqls
-  srtcpy
+  # srtcpy
   techtalk
   techtalkDesktopItem
-  topdf
+  # topdf
   transcribe
-  videoChapter
+  # videoChapter
   visualpreview
-  vttclean
+  # vttclean
   yt-dlp
   zotero
-  pvm
+  # pvm
 ]

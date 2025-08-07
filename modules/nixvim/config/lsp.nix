@@ -16,6 +16,7 @@
         };
         html.enable = true;
         lemminx.enable = true;
+        jdtls.enable = true;
         jsonls.enable = true;
         lua_ls.enable = true;
         gopls.enable = true;
@@ -27,6 +28,11 @@
 
         prolog_ls.enable = false;
         pyright.enable = true;
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+        };
         sqls.enable = true;
         terraformls.enable = true;
         texlab = {

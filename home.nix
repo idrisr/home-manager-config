@@ -1,8 +1,11 @@
 # nixos module entry point to home-manager
-{ inputs, lib, graphical, ... }:
+{ pkgs, inputs, graphical, ... }:
+let lib = pkgs.lib; in
 {
   imports = [
     ./profiles/base.nix
+    ./modules/nixvim/config
+    inputs.nixvim.homeModules.nixvim
   ] ++ lib.optionals graphical [
     ./profiles/desktop.nix
     inputs.stylix.homeModules.stylix

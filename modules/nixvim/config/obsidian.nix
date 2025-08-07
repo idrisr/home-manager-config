@@ -1,75 +1,79 @@
 {
-  keymaps = [
-    # move to filetype only for zettel
-    {
-      key = "<leader>of";
-      action = ":ObsidianFollowLink<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian follow link";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>ob";
-      action = ":ObsidianBacklinks<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian back links";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>ol";
-      action = ":ObsidianLinks<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian links";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>O";
-      action = ":ObsidianToday<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian today";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>odt";
-      action = ":ObsidianTomorrow<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian tomorrow";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>ody";
-      action = ":ObsidianYesterday<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian yesterday";
-        silent = false;
-      };
-    }
-    {
-      key = "<leader>os";
-      action = "<cmd>ObsidianSearch<cr>";
-      mode = "n";
-      options = {
-        desc = "obsidian tomorrow";
-        silent = false;
-      };
-    }
-  ];
+  # keymaps = [
+  # # move to filetype only for zettel
+  # {
+  # key = "<leader>of";
+  # action = ":Obsidian follow_link<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian follow link";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>ob";
+  # action = ":Obsidian backlinks<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian back links";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>ol";
+  # action = ":Obsidian links<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian links";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>O";
+  # action = ":Obsidian today<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian today";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>odt";
+  # action = ":Obsidian tomorrow<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian tomorrow";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>ody";
+  # action = ":Obsidian yesterday<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian yesterday";
+  # silent = false;
+  # };
+  # }
+  # {
+  # key = "<leader>os";
+  # action = "<cmd>Obsidian search<cr>";
+  # mode = "n";
+  # options = {
+  # desc = "obsidian search";
+  # silent = false;
+  # };
+  # }
+  # ];
 
   plugins.obsidian = {
-    enable = true;
+    enable = false;
     settings = {
       disable_frontmatter = true;
+      luaConfig = {
+        opts.legacy_commands = false;
+      };
+
       follow_url_func = ''
         function(url)
           vim.fn.jobstart({"xdg-open", url})  -- linux

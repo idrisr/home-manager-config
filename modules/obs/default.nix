@@ -2,7 +2,8 @@
   config = {
     programs.obs-studio = {
       enable = true;
-      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+      plugins = with pkgs.obs-studio-plugins;
+        [ obs-vkcapture obs-pipewire-audio-capture ];
     };
   };
 }

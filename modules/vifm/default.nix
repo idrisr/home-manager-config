@@ -2,7 +2,7 @@
 {
   config = {
     programs.vifm = {
-      enable = true;
+      enable = false;
 
       extraConfig = lib.concatStringsSep "\n"
         ([
@@ -60,12 +60,12 @@
               fileviewer <font/*> ${vp} font %pw %ph %px %py %c %N %pc ${vp} clear
               fileviewer <image/*> ${vp} image %pw %ph %px %py %c %N %pc ${vp} clear
               fileviewer {*.mp3, *.m4a} ${pkgs.audioPreview}/bin/audioPreview
-              fileviewer {*.pdf} ${vp} pdf %pw %ph %px %py %c %N %pc ${vp} clear, ${pkgs.poppler_utils}/bin/pdfinfo, ${pkgs.pdftc}/bin/pdftc
               nnoremap L :!${pkgs.srtcpy}/bin/srtcpy %f | ${lib.getExe pkgs.wayclip}<cr>
             ''
         )
         );
 
+      # fileviewer {*.pdf} ${vp} pdf %pw %ph %px %py %c %N %pc ${vp} clear, ${pkgs.poppler_utils}/bin/pdfinfo, ${pkgs.pdftc}/bin/pdftc
       # opts = {
       # history = 100;
       # nofollowlinks = true;
@@ -86,8 +86,6 @@
       # # wildstyle = "popup";
       # };
     };
-    home.packages = with pkgs; [ nix-derivation pdftc ] ++
-      lib.lists.optional graphical (with pkgs;
-      [ visualpreview libheif ]);
+    home.packages = with pkgs; [ nix-derivation ];
   };
 }

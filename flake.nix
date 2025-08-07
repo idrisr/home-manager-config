@@ -7,8 +7,9 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur = {
-      url = "github:idrisr/nur-packages";
+    idris-pkgs = {
+      # url = "github:idrisr/idris-pkgs";
+      url = "/home/hippoid/fun/idris-pkgs/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -41,9 +42,19 @@
     let
       system = "x86_64-linux";
 
+      makeHomeModules = { pkgs, inputs, graphical }:
+        [
+          (import ./home.nix { inherit pkgs inputs graphical; })
+        ];
+
+      modules = makeHomeModules {
+        inherit pkgs inputs;
+        graphical = true;
+      };
+
       overlays = [
         inputs.visualpreview.overlays.visualpreview
-        inputs.nur.overlays.${system}
+        inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
         (import ./modules/xournal)
         (import ./modules/tikzit)
@@ -59,18 +70,22 @@
         config.allowUnfree = true;
       };
 
-      modules = [
-        ./home.nix
-        ./modules/nixvim/config
-        inputs.nixvim.homeManagerModules.nixvim
-      ];
     in
     rec
     {
+      # used by nixos configuration when importing this stand-alone hm config
+      inherit overlays;
+
       homeConfigurations = {
         "graphical" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = modules;
+
+          modules = [
+            (import ./home.nix {
+              inherit pkgs inputs;
+              graphical = true;
+            })
+          ];
 
           extraSpecialArgs = {
             inherit inputs;
@@ -80,7 +95,12 @@
 
         "headless" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = modules;
+          modules = [
+            (import ./home.nix {
+              inherit pkgs inputs;
+              graphical = true;
+            })
+          ];
 
           extraSpecialArgs = {
             inherit inputs;
@@ -89,15 +109,31 @@
         };
       };
 
-      overlays.default = overlays;
       packages.${system} = {
         headless = homeConfigurations.headless.activationPackage;
         graphical = homeConfigurations.graphical.activationPackage;
       };
 
-
       homeManagerModules.base = {
         imports = modules;
+      };
+
+      nixosModules.graphical = let graphical = true; in {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+
+          users.hippoid = import ./home.nix {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            inherit inputs;
+            inherit graphical;
+          };
+
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit graphical;
+          };
+        };
       };
     };
 }
