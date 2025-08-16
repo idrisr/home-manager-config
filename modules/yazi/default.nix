@@ -47,7 +47,7 @@
           }
           {
             on = [ "g" "L" ];
-            run = ''${pkgs.sorta}/bin/sorta --input $1 | wl-copy'';
+            run = ''shell '${pkgs.sorta}/bin/sorta --input "$1" | wl-copy' '';
           }
         ];
       };

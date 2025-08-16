@@ -7,9 +7,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ytdlp = {
-      url = "github:nmouha/nixpkgs/patch-1";
-    };
     idris-pkgs = {
       # url = "github:idrisr/idris-pkgs";
       url = "/home/hippoid/fun/idris-pkgs/";

@@ -518,7 +518,6 @@
         "nixvim": "nixvim",
         "rofi": "rofi",
         "stylix": "stylix",
-        "ytdlp": "ytdlp",
         "zettel": "zettel"
       }
     },
@@ -776,22 +775,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
-        "type": "github"
-      }
-    },
-    "ytdlp": {
-      "locked": {
-        "lastModified": 1753765636,
-        "narHash": "sha256-FmD/D9X8pFFbxVrGHtt4nPtNvFzGiFijPTGsCkSxSpM=",
-        "owner": "nmouha",
-        "repo": "nixpkgs",
-        "rev": "d8670c30ecaa1f52e9b211ab777893ba135f0740",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nmouha",
-        "ref": "patch-1",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },
