@@ -26,6 +26,7 @@ with pkgs; [
   pdftc
   pipe-rename
   # rustdesk
+  sorta
   sqls
   # srtcpy
   techtalk
@@ -33,9 +34,8 @@ with pkgs; [
   # topdf
   transcribe
   # videoChapter
-  visualpreview
   # vttclean
-  yt-dlp
+  wl-clipboard-rs
   zotero
   # pvm
 ]

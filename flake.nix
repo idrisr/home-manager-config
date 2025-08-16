@@ -7,6 +7,9 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ytdlp = {
+      url = "github:nmouha/nixpkgs/patch-1";
+    };
     idris-pkgs = {
       # url = "github:idrisr/idris-pkgs";
       url = "/home/hippoid/fun/idris-pkgs/";
@@ -14,10 +17,6 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    visualpreview = {
-      url = "github:idrisr/visualpreview";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rofi = {
@@ -53,7 +52,6 @@
       };
 
       overlays = [
-        inputs.visualpreview.overlays.visualpreview
         inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
         (import ./modules/xournal)
