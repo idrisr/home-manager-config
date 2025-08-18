@@ -1,24 +1,31 @@
 { pkgs, ... }: {
   config = {
     programs.yazi = {
-      enable = true;
+      plugins = {
+        piper = pkgs.yaziPlugins.piper;
+      };
 
+      enable = true;
       settings = {
         mgr = {
           show_hidden = true;
-
-
           preview = {
             max_width = 1200;
             max_height = 1000;
           };
+        };
 
+        plugin = {
+          prepend_previewers = [
+            {
+              name = "*.srt";
+              run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
+            }
+          ];
         };
       };
 
       keymap = {
-        input.prepend_keymap = [
-        ];
         mgr.prepend_keymap = [
           { run = "quit"; on = [ "q" ]; }
           {
@@ -30,7 +37,7 @@
             run = "cd ~/books";
           }
           {
-            on = [ "g" "d" ];
+            on = [ "g" "w" ];
             run = "cd ~/downloads";
           }
           {
@@ -45,6 +52,11 @@
             on = [ "g" "r" ];
             run = "cd ~/roam-export/";
           }
+          {
+            on = [ "g" "s" ];
+            run = "cd ~/screenshots/";
+          }
+
           {
             on = [ "g" "L" ];
             run = ''shell '${pkgs.sorta}/bin/sorta --input "$1" | wl-copy' '';
