@@ -33,7 +33,7 @@ with pkgs; [
   techtalkDesktopItem
   # topdf
   transcribe
-  # videoChapter
+  videoChapter
   # vttclean
   wl-clipboard-rs
   zotero
