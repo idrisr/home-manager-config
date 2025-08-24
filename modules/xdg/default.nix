@@ -1,11 +1,13 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 let
   qute = "org.qutebrave.qutebrave.desktop";
-  brave = "brave-brave.desktop";
   # spreadsheet = "libreoffice-calc.desktop";
   pdf = "org.pwmt.zathura.desktop";
-in {
+  sxiv = "sxiv.desktop";
+in
+{
   config = {
+    home.packages = [ pkgs.sxiv ];
     xdg = {
       enable = true;
 
@@ -25,11 +27,17 @@ in {
         enable = true;
         defaultApplications = {
           "application/pdf" = pdf;
-          "text/html" = brave;
-          "x-scheme-handler/about" = brave;
-          "x-scheme-handler/http" = brave;
-          "x-scheme-handler/https" = brave;
-          "x-scheme-handler/unknown" = brave;
+          "text/html" = qute;
+          "image/jpeg" = sxiv;
+          "image/png" = sxiv;
+          "image/gif" = sxiv;
+          "image/webp" = sxiv;
+          "image/bmp" = sxiv;
+          "image/tiff" = sxiv;
+          "x-scheme-handler/about" = qute;
+          "x-scheme-handler/http" = qute;
+          "x-scheme-handler/https" = qute;
+          "x-scheme-handler/unknown" = qute;
         };
       };
     };
