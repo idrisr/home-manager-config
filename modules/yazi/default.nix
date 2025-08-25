@@ -1,8 +1,10 @@
 { pkgs, ... }: {
   config = {
+    home.packages = with pkgs; [ ouch ];
     programs.yazi = {
       plugins = {
         piper = pkgs.yaziPlugins.piper;
+        ouch = pkgs.yaziPlugins.ouch;
       };
 
       enable = true;
@@ -17,10 +19,18 @@
 
         plugin = {
           prepend_previewers = [
-            {
-              name = "*.srt";
-              run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
-            }
+            { name = "*.srt"; run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"''; }
+            { mime = "application/*zip"; run = "ouch"; }
+            { mime = "application/x-tar"; run = "ouch"; }
+            { mime = "application/x-bzip2"; run = "ouch"; }
+            { mime = "application/x-7z-compressed"; run = "ouch"; }
+            { mime = "application/x-rar"; run = "ouch"; }
+            { mime = "application/vnd.rar"; run = "ouch"; }
+            { mime = "application/x-xz"; run = "ouch"; }
+            { mime = "application/xz"; run = "ouch"; }
+            { mime = "application/x-zstd"; run = "ouch"; }
+            { mime = "application/zstd"; run = "ouch"; }
+            { mime = "application/java-archive"; run = "ouch"; }
           ];
         };
       };
