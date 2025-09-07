@@ -46,6 +46,7 @@ in
       ./ultisnips.nix # move to other snip thing
       ./vimrc.nix
       ./whichkey.nix
+      ./yazi.nix
     ];
 
     viAlias = true;

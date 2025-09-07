@@ -1,10 +1,11 @@
 { pkgs, ... }: {
   config = {
-    home.packages = with pkgs; [ ouch ];
+    home.packages = with pkgs; [ ouch miller ];
     programs.yazi = {
       plugins = {
         piper = pkgs.yaziPlugins.piper;
         ouch = pkgs.yaziPlugins.ouch;
+        miller = pkgs.yaziPlugins.miller;
       };
 
       enable = true;
@@ -31,6 +32,7 @@
             { mime = "application/x-zstd"; run = "ouch"; }
             { mime = "application/zstd"; run = "ouch"; }
             { mime = "application/java-archive"; run = "ouch"; }
+            { mime = "text/csv"; run = "miller"; }
           ];
         };
       };

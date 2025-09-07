@@ -17,6 +17,13 @@
       mode = "n";
       options = { desc = "Toggle Outline"; };
     }
+
+    {
+      key = "<leader>ty";
+      action = "<cmd>Yazi<CR>";
+      mode = "n";
+      options = { desc = "Yazi File Browser"; };
+    }
     {
       key = "<leader>tk";
       action = ":lua= vim.diagnostic.setloclist()<CR>";
