@@ -1,9 +1,19 @@
 { pkgs, lib, ... }:
 {
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk # screenshot, file chooser, etc.
+      pkgs.xdg-desktop-portal-wlr
+    ];
+    config.common.default = [ "wlr" ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
     systemd.enableXdgAutostart = true;
+
     settings = {
       "$mod" = "ALT";
 
@@ -31,6 +41,7 @@
         "$mod shift, b, exec, ${lib.getExe pkgs.qutebrowser}"
         "$mod shift, v, exec, ${lib.getExe pkgs.firefox}"
         "$mod shift, k, exec, ${lib.getExe pkgs.kitty}"
+        "$mod, s, exec, ${lib.getExe pkgs.gradia}  --screenshot=INTERACTIVE"
 
         ", XF86AudioLowerVolume, exec, pamixer -d 5"
         ", XF86AudioRaiseVolume, exec, pamixer -i 5"

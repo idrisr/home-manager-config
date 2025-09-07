@@ -49,6 +49,11 @@
       };
 
       overlays = [
+        (self: super: {
+          latexindent = super.writeShellScriptBin "latexindent" ''
+            exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
+          '';
+        })
         inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
         (import ./modules/xournal)
@@ -57,6 +62,11 @@
         # (import ./modules/brave)
         inputs.rofi.overlays.all
         inputs.zettel.overlays.zettel
+        (self: super: {
+          latexindent = super.writeShellScriptBin "latexindent" ''
+            exec ${super.latexindent}/bin/latexindent -m "$@"
+          '';
+        })
       ];
 
       pkgs = import nixpkgs {
