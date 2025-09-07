@@ -47,6 +47,9 @@
                 forwardSearchAfter = true;
                 onSave = false;
               };
+              latexindent = {
+                modifyLineBreaks = true;
+              };
               chktex = {
                 onEdit = true;
                 onOpenAndSave = true;
