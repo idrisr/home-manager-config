@@ -9,15 +9,16 @@ with pkgs; [
   claude-code
   code2prompt
   cryptsetup
-  ffmpeg
+  ffmpeg_8-full
+  gradia
   kdePackages.krohnkite
   keepassxc
+  texliveFull
+  # latexindent
   libreoffice
   mathpix-snipping-tool
   mksession
-  # mdtopdf
   minicom
-  # newcover
   nixpkgs-fmt
   ocrmypdf
   opencode
