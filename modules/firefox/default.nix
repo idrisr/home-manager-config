@@ -37,6 +37,19 @@
 
           definedAliases = [ "@yt" ];
         };
+        "hoogle" = {
+          urls = [{
+            template = "https://hoogle.haskell.org";
+            params = [
+              {
+                name = "hoogle";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+
+          definedAliases = [ "@ho" ];
+        };
       };
 
       search.force = true;
