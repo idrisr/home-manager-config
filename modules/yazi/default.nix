@@ -17,6 +17,18 @@
             max_height = 1000;
           };
         };
+        opener = {
+          edit = [{
+            run = ''nvim "$@"'';
+            block = true;
+          }];
+        };
+
+        open = {
+          rules = [
+            { name = "*.srt"; use = "edit"; }
+          ];
+        };
 
         plugin = {
           prepend_previewers = [
