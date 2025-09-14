@@ -2,7 +2,7 @@
 {
   config = {
     programs.qutebrowser = {
-      enable = true;
+      enable = false;
       keyBindings = {
         normal = {
           "cm" = "clear-messages";

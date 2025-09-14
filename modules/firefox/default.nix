@@ -4,7 +4,6 @@
   programs.firefox = {
     enable = true;
     profiles.hippoid = {
-
       search.engines = {
         "Nix Packages" = {
           urls = [{
@@ -23,6 +22,20 @@
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
+        };
+
+        "cpl" = {
+          urls = [{
+            template = "https://chipublib.bibliocommons.com/v2/search";
+            params = [
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+
+          definedAliases = [ "@cpl" ];
         };
         "youtube" = {
           urls = [{
@@ -49,6 +62,25 @@
           }];
 
           definedAliases = [ "@ho" ];
+        };
+
+        "home-manager" = {
+          urls = [{
+            template = "https://home-manager-options.extranix.com";
+            params = [
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+
+              {
+                name = "release";
+                value = "master";
+              }
+            ];
+          }];
+
+          definedAliases = [ "@hm" ];
         };
       };
 
@@ -88,7 +120,7 @@
         ublock-origin
         sponsorblock
         darkreader
-        # tridactyl
+        tridactyl
         youtube-shorts-block
       ];
     };
