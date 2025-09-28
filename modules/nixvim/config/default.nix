@@ -22,6 +22,7 @@ in
       ./cornelis.nix
       ./csvview.nix
       ./dap.nix
+      ./dot.nix
       ./emmet.nix
       ./fugitive.nix
       ./fzf.nix
@@ -35,6 +36,7 @@ in
       ./obsidian.nix
       ./oil.nix
       ./ollama.nix
+      ./parinfer.nix
       ./persistence.nix
       ./render-markdown.nix
       ./surround.nix
@@ -60,6 +62,8 @@ in
       outline-nvim
       telescope_hoogle
       pkgs.zettel
+      nvim-treesitter-parsers.yuck
+      yuck-vim
     ];
 
     extraConfigVim = concatFiles [ ./vimrc ];

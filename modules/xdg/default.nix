@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  qute = "org.qutebrave.qutebrave.desktop";
+  firefox = "firefox.desktop";
   # spreadsheet = "libreoffice-calc.desktop";
   pdf = "org.pwmt.zathura.desktop";
   sxiv = "sxiv.desktop";
@@ -27,17 +27,17 @@ in
         enable = true;
         defaultApplications = {
           "application/pdf" = pdf;
-          "text/html" = qute;
+          "text/html" = firefox;
           "image/jpeg" = sxiv;
           "image/png" = sxiv;
           "image/gif" = sxiv;
           "image/webp" = sxiv;
           "image/bmp" = sxiv;
           "image/tiff" = sxiv;
-          "x-scheme-handler/about" = qute;
-          "x-scheme-handler/http" = qute;
-          "x-scheme-handler/https" = qute;
-          "x-scheme-handler/unknown" = qute;
+          "x-scheme-handler/about" = firefox;
+          "x-scheme-handler/http" = firefox;
+          "x-scheme-handler/https" = firefox;
+          "x-scheme-handler/unknown" = firefox;
         };
       };
     };

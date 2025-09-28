@@ -48,7 +48,7 @@
         gs = "git status";
         gsp = "git status --porcelain";
         lg = "lazygit";
-        l = "lsd -l";
+        l = "lsd --almost-all --human-readable --dereference --long";
         ne = "nix-instantiate --eval";
         v = "nvim";
       };

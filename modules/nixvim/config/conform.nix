@@ -31,6 +31,7 @@
           javascript = [ "prettierd" ];
           jsonc = [ "fixjson" ];
           json = [ "fixjson" ];
+          md = [ "mdformat" ];
           lua = [ "stylua" ];
           nix = [ "nixpkgs-fmt" ];
           ocaml = [ "ocamlformat" ];
@@ -53,6 +54,10 @@
           };
           sqlfluff = {
             command = lib.getExe pkgs.sqlfluff;
+          };
+          mdformat = {
+            command = "${lib.getExe pkgs.mdformat}";
+            args = [ "--wrap" 80 ];
           };
         };
       };

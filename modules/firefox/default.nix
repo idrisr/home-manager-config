@@ -5,6 +5,80 @@
     enable = true;
     profiles.hippoid = {
       search.engines = {
+        "arch wiki" = {
+          ar = "https://wiki.archlinux.org/index.php?search={}";
+          urls = [{
+            template = "https://wiki.archlinux.org/index.php";
+            params = [
+              {
+                name = "search";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+          definedAliases = [ "ar" ];
+        };
+
+        "amazon" = {
+          urls = [{
+            template = "https://www.amazon.com/s";
+            params = [
+              {
+                name = "k";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+          definedAliases = [ "am" ];
+        };
+
+        "amazon books" = {
+          urls = [{
+            template = "https://www.amazon.com/s";
+            params = [
+              {
+                name = "k";
+                value = "{searchTerms}";
+              }
+              {
+                name = "i";
+                value = "stripbooks";
+              }
+            ];
+          }];
+          definedAliases = [ "amz" ];
+        };
+        "nixvim" = {
+          urls = [{
+            template = "https://nix-community.github.io/nixvim/";
+            params = [
+              {
+                name = "search";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+          definedAliases = [ "nv" ];
+        };
+
+        "Nix Options" = {
+          urls = [{
+            template = "https://search.nixos.org/options";
+            params = [
+              {
+                name = "type";
+                value = "packages";
+              }
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "no" ];
+        };
         "Nix Packages" = {
           urls = [{
             template = "https://search.nixos.org/packages";
@@ -21,10 +95,10 @@
           }];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
+          definedAliases = [ "np" ];
         };
 
-        "cpl" = {
+        "Chicago Public Library" = {
           urls = [{
             template = "https://chipublib.bibliocommons.com/v2/search";
             params = [
@@ -35,8 +109,9 @@
             ];
           }];
 
-          definedAliases = [ "@cpl" ];
+          definedAliases = [ "cpl" ];
         };
+
         "youtube" = {
           urls = [{
             template = "https://www.youtube.com/results";
@@ -48,7 +123,7 @@
             ];
           }];
 
-          definedAliases = [ "@yt" ];
+          definedAliases = [ "yt" ];
         };
         "hoogle" = {
           urls = [{
@@ -61,7 +136,7 @@
             ];
           }];
 
-          definedAliases = [ "@ho" ];
+          definedAliases = [ "ho" ];
         };
 
         "home-manager" = {
@@ -80,7 +155,7 @@
             ];
           }];
 
-          definedAliases = [ "@hm" ];
+          definedAliases = [ "hm" ];
         };
       };
 

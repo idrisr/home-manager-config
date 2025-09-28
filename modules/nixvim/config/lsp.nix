@@ -10,6 +10,7 @@
         bashls.enable = true;
         ccls.enable = false;
         cssls.enable = true;
+        dotls.enable = true;
         hls = {
           enable = false;
           installGhc = false;

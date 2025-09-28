@@ -1,6 +1,7 @@
 pkgs:
 with pkgs; [
   age
+  amp-cli
   # audioPreview
   # booknote
   books
@@ -11,22 +12,26 @@ with pkgs; [
   cryptsetup
   ffmpeg_8-full
   gradia
+  inotify-tools
   kdePackages.krohnkite
+  kdePackages.kdenlive
   keepassxc
   texliveFull
   # latexindent
   libreoffice
   mathpix-snipping-tool
   mksession
+  mermaid-cli
   minicom
+  nerd-fonts.jetbrains-mono
   nixpkgs-fmt
   ocrmypdf
-  opencode
   papers
   papersDesktopItem
   pdftc
   pipe-rename
-  # rustdesk
+  # pvm
+  reaper
   sorta
   sqls
   # srtcpy
@@ -38,5 +43,5 @@ with pkgs; [
   # vttclean
   wl-clipboard-rs
   zotero
-  # pvm
+  pvm
 ]

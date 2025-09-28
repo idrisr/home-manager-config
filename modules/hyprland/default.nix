@@ -17,12 +17,26 @@
     settings = {
       "$mod" = "ALT";
 
+      windowrule = [
+        "workspace 1, class:^(kitty)$"
+        "workspace 2, class:^(org.pwmt.zathura)$"
+        "workspace 3, class:^(firefox)$"
+        "workspace 4, class:^(be.alexandervanhee.gradia)$"
+        "workspace 4, class:^(org.keepassxc.KeePassXC)$"
+        "workspace 5, class:^(org.pulseaudio.pavucontrol)$"
+        "workspace 5, class:^(REAPER)$"
+      ];
+
       bindm = [
         # mouse movements
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
         "$mod ALT, mouse:272, resizewindow"
       ];
+
+      decoration = {
+        rounding = 8;
+      };
 
       bind = [
         "$mod, q, workspace, 1"
@@ -53,23 +67,40 @@
         "$mod shift, 5, movetoworkspace, 5"
 
         "$mod SHIFT, O, killactive"
+        "$mod SHIFT, d, layoutmsg, dwindle"
+        "$mod SHIFT, m, layoutmsg, master"
+        "$mod SHIFT, f, togglefloating"
       ];
     };
-    extraConfig = ''
-          input {
-              touchpad {
-                natural_scroll = true
-              }
-          }
 
-          general {
-              gaps_in = 2; # inner gaps
-              gaps_out = 4; # outer gaps (to screen edges)
-      border_size = 4
-          }
-          env = XCURSOR_THEME,Bibata-Modern-Classic
-          env = XCURSOR_SIZE,24
+    plugins = [
+    ];
+
+    extraConfig = ''
+      input {
+        touchpad {
+          natural_scroll = true
+        }
+      }
+
+      general {
+        gaps_in = 2; # inner gaps
+        gaps_out = 4; # outer gaps (to screen edges)
+        border_size = 4
+      }
+      env = XCURSOR_THEME,Bibata-Modern-Classic
+      env = XCURSOR_SIZE,24
     '';
+  };
+
+  services.hyprshell = {
+    enable = true;
+    settings = {
+      windows = {
+        overview = { };
+        switch = { };
+      };
+    };
   };
 
   home.packages = with pkgs; [

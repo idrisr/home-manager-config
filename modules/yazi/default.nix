@@ -10,6 +10,7 @@
 
       enable = true;
       settings = {
+        ratio = [ 1 1 6 ];
         mgr = {
           show_hidden = true;
           preview = {
@@ -25,7 +26,7 @@
         };
 
         open = {
-          rules = [
+          prepend_rules = [
             { name = "*.srt"; use = "edit"; }
           ];
         };
@@ -60,6 +61,7 @@
           { on = [ "g" "r" ]; run = "cd ~/roam-export/"; }
           { on = [ "g" "s" ]; run = "cd ~/screenshots/"; }
           { on = [ "g" "m" ]; run = "cd /var/lib/pinchflat/media"; }
+          { on = [ "g" "f" ]; run = "cd ~/.config/fabric/"; }
           {
             on = [ "g" "L" ];
             run = ''shell '${pkgs.sorta}/bin/sorta --input "$1" | wl-copy' '';

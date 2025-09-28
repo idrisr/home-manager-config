@@ -3,6 +3,8 @@
     ./base.nix
     ../modules/alacritty
     ../modules/ctags
+    ../modules/dunst
+    ../modules/fabric
     ../modules/firefox
     ../modules/flameshot
     ../modules/github
