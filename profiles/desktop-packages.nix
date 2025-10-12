@@ -1,9 +1,8 @@
 pkgs:
 with pkgs; [
   age
+  signal-desktop
   amp-cli
-  # audioPreview
-  # booknote
   books
   booksDesktopItem
   brave
@@ -18,6 +17,7 @@ with pkgs; [
   keepassxc
   texliveFull
   # latexindent
+  lean4
   libreoffice
   mathpix-snipping-tool
   mksession

@@ -57,6 +57,7 @@ in
     extraPlugins = with pkgs.vimPlugins; [
       fzf-vim # switch to fzf-lua?
       img-clip-nvim
+      lean-nvim
       kmonad-vim
       nvim-dap-ui
       outline-nvim

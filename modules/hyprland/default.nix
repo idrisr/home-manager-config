@@ -23,8 +23,10 @@
         "workspace 3, class:^(firefox)$"
         "workspace 4, class:^(be.alexandervanhee.gradia)$"
         "workspace 4, class:^(org.keepassxc.KeePassXC)$"
+        "workspace 4, class:^(signal)$"
         "workspace 5, class:^(org.pulseaudio.pavucontrol)$"
         "workspace 5, class:^(REAPER)$"
+        "workspace 5, class:^(org.kde.kdenlive)$"
       ];
 
       bindm = [

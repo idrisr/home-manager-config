@@ -13,13 +13,10 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("outline").setup({})
-require("lspconfig").hls.setup({})
-require("lspconfig").lua_ls.setup({
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
+vim.lsp.config('hls', {})
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = { diagnostics = { globals = { 'vim' } } }
+  }
 })
+vim.lsp.enable({ 'hls', 'lua_ls' })

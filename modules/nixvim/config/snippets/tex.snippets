@@ -4,6 +4,15 @@ snippet beg "begin{} / end{}" bA
 \end{$1}
 endsnippet
 
+snippet gloss "glossary" bA
+\newglossaryentry{$1}{
+		name={$1},
+		description={
+			$1
+		}
+}
+endsnippet
+
 snippet enum "begin enumerate" bA
 \begin{enumerate}[label = {(\arabic*)}]
 	\item $0

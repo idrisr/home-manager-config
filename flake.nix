@@ -22,7 +22,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
       url = "github:danth/stylix";
@@ -78,8 +78,6 @@
     in
     rec
     {
-      # used by nixos configuration when importing this stand-alone hm config
-      inherit overlays;
 
       homeConfigurations = {
         "graphical" = home-manager.lib.homeManagerConfiguration {

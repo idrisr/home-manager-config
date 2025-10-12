@@ -1,7 +1,7 @@
 pkgs:
 
 with pkgs; [
-  dfc
+  # dfc
   fd
   file
   htop

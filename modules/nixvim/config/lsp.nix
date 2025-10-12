@@ -16,9 +16,11 @@
           installGhc = false;
         };
         html.enable = true;
+        hyprls.enable = true;
         lemminx.enable = true;
         jdtls.enable = true;
         jsonls.enable = true;
+        leanls.enable = true;
         lua_ls.enable = true;
         gopls.enable = true;
         marksman.enable = true;
