@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-telescope.load_extension("hoogle")
 vim.diagnostic.config({
 	virtual_lines = { only_current_line = true },
 	virtual_text = false,
@@ -13,10 +12,3 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("outline").setup({})
-vim.lsp.config('hls', {})
-vim.lsp.config('lua_ls', {
-  settings = {
-    Lua = { diagnostics = { globals = { 'vim' } } }
-  }
-})
-vim.lsp.enable({ 'hls', 'lua_ls' })

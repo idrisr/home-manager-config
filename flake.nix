@@ -22,7 +22,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
       url = "github:danth/stylix";
@@ -79,6 +79,7 @@
     rec
     {
 
+      inherit overlays;
       homeConfigurations = {
         "graphical" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

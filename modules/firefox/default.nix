@@ -48,6 +48,7 @@
           }];
           definedAliases = [ "amz" ];
         };
+
         "nixvim" = {
           urls = [{
             template = "https://nix-community.github.io/nixvim/";
@@ -79,6 +80,7 @@
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "no" ];
         };
+
         "Nix Packages" = {
           urls = [{
             template = "https://search.nixos.org/packages";
@@ -125,6 +127,21 @@
 
           definedAliases = [ "yt" ];
         };
+
+        "loogle" = {
+          urls = [{
+            template = "https://loogle.lean-lang.org";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+
+          definedAliases = [ "lo" ];
+        };
+
         "hoogle" = {
           urls = [{
             template = "https://hoogle.haskell.org";

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   plugins = {
     lspsaga.enable = false;
@@ -6,38 +5,17 @@
     lsp = {
       enable = true;
       servers = {
-        asm_lsp.enable = true;
-        bashls.enable = true;
-        ccls.enable = false;
-        cssls.enable = true;
-        dotls.enable = true;
         hls = {
           enable = false;
           installGhc = false;
         };
-        html.enable = true;
-        hyprls.enable = true;
-        lemminx.enable = true;
-        jdtls.enable = true;
-        jsonls.enable = true;
+
         leanls.enable = true;
-        lua_ls.enable = true;
-        gopls.enable = true;
-        marksman.enable = true;
         nil_ls = {
           enable = true;
           settings.nix.flake.autoArchive = true;
         };
 
-        prolog_ls.enable = false;
-        pyright.enable = true;
-        rust_analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
-        };
-        sqls.enable = true;
-        terraformls.enable = true;
         texlab = {
           enable = true;
           settings = {
@@ -48,7 +26,7 @@
                 args = [ "-pvc" "%f" ];
                 executable = "latexmk";
                 forwardSearchAfter = true;
-                onSave = false;
+                onSave = true;
               };
               latexindent = {
                 modifyLineBreaks = true;
@@ -82,7 +60,6 @@
             };
           };
         };
-        ts_ls.enable = true;
       };
 
       keymaps = {

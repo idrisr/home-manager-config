@@ -57,6 +57,12 @@
       options = { desc = "toggle lsp lines"; };
     }
     {
+      key = "<leader>li";
+      action = '':lua= require("lean.infoview").toggle()<CR>'';
+      mode = "n";
+      options = { desc = "toggle lean infoview"; };
+    }
+    {
       key = "<leader>h";
       action = ":set hlsearch!<cr>";
       mode = "n";
