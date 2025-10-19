@@ -1,67 +1,58 @@
 {
+  lsp.servers = {
+    hls.enable = true;
+    leanls.enable = true;
+    nil_ls.enable = true;
+    lua_ls.enable = true;
+    texlab = {
+      enable = true;
+      config = {
+        bibtexFormatter = "texlab";
+        build = {
+          # assumes main config in local latexmkrc
+          args = [ "-pvc" "%f" ];
+          executable = "latexmk";
+          forwardSearchAfter = true;
+          onSave = false;
+        };
+        latexindent = {
+          modifyLineBreaks = true;
+        };
+        chktex = {
+          onEdit = true;
+          onOpenAndSave = true;
+        };
+        symbols.customEnvironments = [
+          {
+            name = "definition";
+            displayName = "definition";
+          }
+          {
+            name = "example";
+            displayName = "example";
+          }
+          {
+            name = "intuition";
+            displayName = "intuition";
+          }
+          {
+            name = "exercise";
+            displayName = "exercise";
+          }
+          {
+            name = "haskell";
+            displayName = "haskell";
+          }
+        ];
+      };
+    };
+  };
+
   plugins = {
     lspsaga.enable = false;
     lsp-lines.enable = true;
     lsp = {
       enable = true;
-      servers = {
-        hls = {
-          enable = false;
-          installGhc = false;
-        };
-
-        leanls.enable = true;
-        nil_ls = {
-          enable = true;
-          settings.nix.flake.autoArchive = true;
-        };
-
-        texlab = {
-          enable = true;
-          settings = {
-            texlab = {
-              bibtexFormatter = "texlab";
-              build = {
-                # assumes main config in local latexmkrc
-                args = [ "-pvc" "%f" ];
-                executable = "latexmk";
-                forwardSearchAfter = true;
-                onSave = true;
-              };
-              latexindent = {
-                modifyLineBreaks = true;
-              };
-              chktex = {
-                onEdit = true;
-                onOpenAndSave = true;
-              };
-              symbols.customEnvironments = [
-                {
-                  name = "definition";
-                  displayName = "definition";
-                }
-                {
-                  name = "example";
-                  displayName = "example";
-                }
-                {
-                  name = "intuition";
-                  displayName = "intuition";
-                }
-                {
-                  name = "exercise";
-                  displayName = "exercise";
-                }
-                {
-                  name = "haskell";
-                  displayName = "haskell";
-                }
-              ];
-            };
-          };
-        };
-      };
-
       keymaps = {
         diagnostic = { "<space>q" = "setloclist"; };
         lspBuf = {

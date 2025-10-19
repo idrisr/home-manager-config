@@ -3,6 +3,7 @@ with pkgs; [
   age
   signal-desktop
   amp-cli
+  codex
   books
   booksDesktopItem
   brave
@@ -24,6 +25,7 @@ with pkgs; [
   mermaid-cli
   minicom
   nerd-fonts.jetbrains-mono
+  newcover
   nixpkgs-fmt
   ocrmypdf
   papers
