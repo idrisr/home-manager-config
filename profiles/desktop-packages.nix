@@ -47,5 +47,6 @@ with pkgs; [
   # vttclean
   wl-clipboard-rs
   zotero
+  telegram-desktop
   pvm
 ]
