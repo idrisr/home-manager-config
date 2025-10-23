@@ -10,6 +10,8 @@ with pkgs; [
   claude-code
   code2prompt
   cryptsetup
+  davinci-resolve-studio
+  obsidian
   ffmpeg_8-full
   gradia
   inotify-tools
