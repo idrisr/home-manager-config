@@ -4,6 +4,7 @@
     leanls.enable = true;
     nil_ls.enable = true;
     lua_ls.enable = true;
+    superhtml.enable = true;
     texlab = {
       enable = true;
       config = {

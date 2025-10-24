@@ -38,6 +38,7 @@ in
       ./ollama.nix
       ./parinfer.nix
       ./persistence.nix
+      ./project.nix
       ./render-markdown.nix
       ./surround.nix
       ./telescope.nix

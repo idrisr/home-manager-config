@@ -27,7 +27,7 @@
           c = [ "clang-format" ];
           cabal = [ "cabal_fmt" ];
           haskell = [ "fourmolu" ];
-          html = [ "htmlbeautifier" ];
+          html = [ "superhtml" ];
           javascript = [ "prettierd" ];
           jsonc = [ "fixjson" ];
           json = [ "fixjson" ];

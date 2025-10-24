@@ -49,6 +49,19 @@
           definedAliases = [ "amz" ];
         };
 
+        "mdn" = {
+          urls = [{
+            template = "https://developer.mozilla.org/en-US/search";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+          definedAliases = [ "mdn" ];
+        };
+
         "nixvim" = {
           urls = [{
             template = "https://nix-community.github.io/nixvim/";

@@ -27,10 +27,12 @@ in {
           Commit:  %C(yellow)%H%nAuthor:  %C(green)%aN
                 <%aE>%nDate: (%C(red)%ar%Creset) %ai%nSubject: %s%n%n%b'';
       };
+
       user = {
         email = "idris.raja@gmail.com";
         name = "Idris Raja";
       };
+
       alias = {
         conflict = "diff --name-only --diff-filter=U";
         s = "status";
