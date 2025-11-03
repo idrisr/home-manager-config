@@ -8,8 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     idris-pkgs = {
-      # url = "github:idrisr/idris-pkgs";
-      url = "/home/hippoid/fun/idris-pkgs/";
+      url = "github:idrisr/idris-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
