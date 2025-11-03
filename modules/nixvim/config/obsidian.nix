@@ -69,7 +69,7 @@
   plugins.obsidian = {
     enable = true;
     settings = {
-      frontmatter.enable = false;
+      frontmatter.enabled = false;
       legacy_commands = false;
 
       follow_url_func = ''

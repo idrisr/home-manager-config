@@ -2,6 +2,7 @@
   imports = [
     ./base.nix
     ../modules/alacritty
+    ../modules/anki
     ../modules/ctags
     ../modules/dunst
     ../modules/fabric

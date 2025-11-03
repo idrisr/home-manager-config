@@ -6,6 +6,16 @@ let
       k = builtins.concatStringsSep "\n" ([ " " ] ++ j);
     in
     k;
+  vim-sqls = pkgs.vimUtils.buildVimPlugin {
+    name = "sqls";
+    src = pkgs.fetchFromGitHub {
+      repo = "sqls.vim";
+      owner = "sqls-server";
+      rev = "9455c25cf724417584b32cb843cc20be8e56e6bf";
+      sha256 = "sha256-UldNbKG9D6gmcnpXtaiVybGGzzgrrgVBNLCXZGHLpnY=";
+    };
+  };
+  # https://github.com/sqls-server/sqls.vim
 in
 {
   programs.nixvim = {
@@ -21,6 +31,7 @@ in
       ./conform.nix
       ./cornelis.nix
       ./csvview.nix
+      ./dadbod.nix
       ./dap.nix
       ./dot.nix
       ./emmet.nix
@@ -66,6 +77,7 @@ in
       pkgs.zettel
       nvim-treesitter-parsers.yuck
       yuck-vim
+      vim-sqls
     ];
 
     extraConfigVim = concatFiles [ ./vimrc ];

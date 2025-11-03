@@ -5,46 +5,48 @@
     nil_ls.enable = true;
     lua_ls.enable = true;
     superhtml.enable = true;
+    texlab.enable = true;
     texlab = {
-      enable = true;
       config = {
-        bibtexFormatter = "texlab";
-        build = {
-          # assumes main config in local latexmkrc
-          args = [ "-pvc" "%f" ];
-          executable = "latexmk";
-          forwardSearchAfter = true;
-          onSave = false;
+        settings = {
+          bibtexFormatter = "texlab";
+          build = {
+            # assumes main config in local latexmkrc
+            args = [ "-pvc" "%f" ];
+            executable = "latexmk";
+            forwardSearchAfter = true;
+            onSave = false;
+          };
+          latexindent = {
+            modifyLineBreaks = true;
+          };
+          chktex = {
+            onEdit = true;
+            onOpenAndSave = true;
+          };
+          symbols.customEnvironments = [
+            {
+              name = "definition";
+              displayName = "definition";
+            }
+            {
+              name = "example";
+              displayName = "example";
+            }
+            {
+              name = "intuition";
+              displayName = "intuition";
+            }
+            {
+              name = "exercise";
+              displayName = "exercise";
+            }
+            {
+              name = "haskell";
+              displayName = "haskell";
+            }
+          ];
         };
-        latexindent = {
-          modifyLineBreaks = true;
-        };
-        chktex = {
-          onEdit = true;
-          onOpenAndSave = true;
-        };
-        symbols.customEnvironments = [
-          {
-            name = "definition";
-            displayName = "definition";
-          }
-          {
-            name = "example";
-            displayName = "example";
-          }
-          {
-            name = "intuition";
-            displayName = "intuition";
-          }
-          {
-            name = "exercise";
-            displayName = "exercise";
-          }
-          {
-            name = "haskell";
-            displayName = "haskell";
-          }
-        ];
       };
     };
   };

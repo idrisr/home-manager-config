@@ -1,6 +1,7 @@
 pkgs:
 with pkgs; [
   age
+  mdformat
   signal-desktop
   amp-cli
   codex
@@ -10,7 +11,7 @@ with pkgs; [
   claude-code
   code2prompt
   cryptsetup
-  davinci-resolve-studio
+  # davinci-resolve-studio
   obsidian
   ffmpeg_8-full
   gradia
