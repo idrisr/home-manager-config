@@ -48,15 +48,15 @@
       };
 
       overlays = [
-        (self: super: {
-          latexindent = super.writeShellScriptBin "latexindent" ''
-            exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
-          '';
-        })
+        # (self: super: {
+        # latexindent = super.writeShellScriptBin "latexindent" ''
+        # exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
+        # '';
+        # })
         inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
-        (import ./modules/xournal)
-        (import ./modules/tikzit)
+        # (import ./modules/xournal)
+        # (import ./modules/tikzit)
         (import ./modules/kdenlive)
         # (import ./modules/brave)
         inputs.rofi.overlays.all
