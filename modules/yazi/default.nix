@@ -54,6 +54,7 @@
         mgr.prepend_keymap = [
           { run = "quit"; on = [ "q" ]; }
           { on = [ "g" "v" ]; run = "cd ~/videos"; }
+          { on = [ "g" "f" ]; run = "cd ~/fun"; }
           { on = [ "g" "b" ]; run = "cd ~/books"; }
           { on = [ "g" "w" ]; run = "cd ~/downloads"; }
           { on = [ "g" "t" ]; run = "cd ~/documents/tech-talks/"; }
