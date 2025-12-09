@@ -51,6 +51,7 @@ in
       ./persistence.nix
       ./project.nix
       ./render-markdown.nix
+      ./slime.nix
       ./surround.nix
       ./telescope.nix
       ./treesitter.nix
@@ -78,6 +79,8 @@ in
       nvim-treesitter-parsers.yuck
       yuck-vim
       vim-sqls
+      julia-vim
+      matchit-zip
     ];
 
     extraConfigVim = concatFiles [ ./vimrc ];

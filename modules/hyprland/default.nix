@@ -17,6 +17,11 @@
     settings = {
       "$mod" = "ALT";
 
+      monitor = [
+        "DP-1,preferred,auto,1"
+        "eDP-1,disable"
+      ];
+
       windowrule = [
         "workspace 1, class:^(kitty)$"
         "workspace 2, class:^(org.pwmt.zathura)$"
