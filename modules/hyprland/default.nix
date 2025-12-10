@@ -100,7 +100,7 @@
   };
 
   services.hyprshell = {
-    enable = true;
+    enable = false;
     settings = {
       windows = {
         overview = { };
