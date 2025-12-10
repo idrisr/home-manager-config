@@ -32,6 +32,7 @@
         height = 10;
         output = [
           "eDP-1"
+          "DP-1"
         ];
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [
