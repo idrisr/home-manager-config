@@ -18,7 +18,7 @@
       "$mod" = "ALT";
 
       monitor = [
-        ", preferred, auto, 1"
+        ", preferred, auto-up, 2"
       ];
 
       windowrule = [
