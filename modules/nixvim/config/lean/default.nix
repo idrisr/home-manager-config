@@ -1,3 +1,3 @@
 {
-  plugins.lean.enable = false;
+  plugins.lean.enable = true;
 }

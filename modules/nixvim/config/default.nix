@@ -70,17 +70,18 @@ in
     extraPlugins = with pkgs.vimPlugins; [
       fzf-vim # switch to fzf-lua?
       img-clip-nvim
-      lean-nvim
-      kmonad-vim
-      nvim-dap-ui
-      outline-nvim
-      telescope_hoogle
-      pkgs.zettel
-      nvim-treesitter-parsers.yuck
-      yuck-vim
-      vim-sqls
       julia-vim
+      kmonad-vim
+      lean-nvim
       matchit-zip
+      nvim-dap-ui
+      nvim-treesitter-parsers.yuck
+      outline-nvim
+      pkgs.zettel
+      telescope_hoogle
+      vim-pencil
+      vim-sqls
+      yuck-vim
     ];
 
     extraConfigVim = concatFiles [ ./vimrc ];
