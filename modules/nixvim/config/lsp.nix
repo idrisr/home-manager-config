@@ -5,6 +5,7 @@
     leanls.enable = true;
     nil_ls.enable = true;
     lua_ls.enable = true;
+    jsonls.enable = true;
     superhtml.enable = true;
     texlab = {
       enable = true;
