@@ -3,7 +3,16 @@
     hls.enable = true;
     bashls.enable = true;
     leanls.enable = true;
-    nil_ls.enable = true;
+    nil_ls = {
+      enable = true;
+      config = {
+        nix = {
+          flake = {
+            autoArchive = true;
+          };
+        };
+      };
+    };
     lua_ls.enable = true;
     jsonls.enable = true;
     superhtml.enable = true;
