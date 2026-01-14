@@ -1,9 +1,9 @@
-{ lib, ... }: {
+{ config, lib, ... }: {
   config = {
     programs.zsh = {
       enable = true;
       plugins = [ ];
-
+      dotDir = "${config.xdg.configHome}/zsh";
       initContent = lib.mkBefore (builtins.concatStringsSep "\n" [
         ''eval "$(direnv hook zsh)"''
         ''

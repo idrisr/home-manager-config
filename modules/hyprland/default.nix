@@ -22,15 +22,15 @@
       ];
 
       windowrule = [
-        "workspace 1, class:^(kitty)$"
-        "workspace 2, class:^(org.pwmt.zathura)$"
-        "workspace 3, class:^(firefox)$"
-        "workspace 4, class:^(be.alexandervanhee.gradia)$"
-        "workspace 4, class:^(org.keepassxc.KeePassXC)$"
-        "workspace 4, class:^(signal)$"
-        "workspace 5, class:^(org.pulseaudio.pavucontrol)$"
-        "workspace 5, class:^(REAPER)$"
-        "workspace 5, class:^(org.kde.kdenlive)$"
+        "match:class ^(kitty)$, workspace 1"
+        "match:class ^(org.pwmt.zathura)$, workspace 2"
+        "match:class ^(firefox)$, workspace 3"
+        "match:class ^(be.alexandervanhee.gradia)$, workspace 4"
+        "match:class ^(org.keepassxc.keepassxc)$, workspace 4"
+        "match:class ^(signal)$, workspace 4"
+        "match:class ^(org.pulseaudio.pavucontrol)$, workspace 5"
+        "match:class ^(reaper)$, workspace 5"
+        "match:class ^(org.kde.kdenlive)$, workspace 5"
       ];
 
       bindm = [
@@ -44,6 +44,14 @@
         rounding = 8;
       };
 
+      misc = {
+        on_focus_under_fullscreen = 1;
+      };
+
+      animations = {
+        enabled = false;
+      };
+
       bind = [
         "$mod, q, workspace, 1"
         "$mod, w, workspace, 2"
@@ -51,6 +59,7 @@
         "$mod, r, workspace, 4"
         "$mod, t, workspace, 5"
         "$mod, j, cyclenext"
+        # "$mod, j, focuscurrentorlast"
         "$mod, f, fullscreen, 1"
         "$mod, l, resizeactive, 40 0"
         "$mod, h, resizeactive, -40 0"
