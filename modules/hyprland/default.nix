@@ -9,6 +9,7 @@
     config.common.default = [ "wlr" ];
   };
 
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -85,6 +86,8 @@
         "$mod SHIFT, d, layoutmsg, dwindle"
         "$mod SHIFT, m, layoutmsg, master"
         "$mod SHIFT, f, togglefloating"
+
+        "$mod SHIFT, l, exec, hyprvoice toggle"
       ];
     };
 

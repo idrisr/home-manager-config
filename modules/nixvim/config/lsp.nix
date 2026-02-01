@@ -15,6 +15,7 @@
     };
     lua_ls.enable = true;
     jsonls.enable = true;
+    pyright.enable = true;
     superhtml.enable = true;
     texlab = {
       enable = true;

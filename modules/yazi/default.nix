@@ -33,7 +33,11 @@
 
         plugin = {
           prepend_previewers = [
-            { name = "*.srt"; run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"''; }
+            {
+              name = "*.srt";
+              # run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
+              run = "piper -- ${pkgs.sorta}/bin/sorta --stdin";
+            }
             { mime = "application/*zip"; run = "ouch"; }
             { mime = "application/x-tar"; run = "ouch"; }
             { mime = "application/x-bzip2"; run = "ouch"; }

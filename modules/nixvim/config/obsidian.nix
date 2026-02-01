@@ -72,12 +72,6 @@
       frontmatter.enabled = false;
       legacy_commands = false;
 
-      follow_url_func = ''
-        function(url)
-        vim.fn.jobstart({"xdg-open", url})  -- linux
-        end
-      '';
-
       workspaces = [{
         path = "/home/hippoid/roam-export";
         name = "roam";

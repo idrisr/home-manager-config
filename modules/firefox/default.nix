@@ -222,11 +222,11 @@
       '';
 
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin
-        sponsorblock
+        # ublock-origin
+        # sponsorblock
         darkreader
-        tridactyl
-        youtube-shorts-block
+        # tridactyl
+        # youtube-shorts-block
       ];
     };
   };

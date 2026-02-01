@@ -18,6 +18,7 @@
           write-subs = true;
           write-auto-subs = true;
           convert-subs = "srt";
+          no-playlist = true;
         };
       };
     };

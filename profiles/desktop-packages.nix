@@ -16,10 +16,9 @@ with pkgs; [
   gimp
   gradia
   inotify-tools
-  kdePackages.krohnkite
-  kdePackages.kdenlive
+  # kdePackages.krohnkite
+  # kdePackages.kdenlive
   keepassxc
-  lean4
   libreoffice
   mksession
   mermaid-cli
@@ -49,6 +48,7 @@ with pkgs; [
   telegram-desktop
   pvm
   rnote
+  zulip
 
   # latexindent
 ]

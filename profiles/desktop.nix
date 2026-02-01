@@ -26,6 +26,7 @@
     ../modules/vscode
     ../modules/waybar
     ../modules/xdg
+    ../modules/urlq
     ../modules/yazi
     ../modules/yt-dlp
     ../modules/zathura
