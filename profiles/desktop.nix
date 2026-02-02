@@ -17,6 +17,7 @@
     ../modules/mpv
     ../modules/obs
     ../modules/opentablet
+    ../modules/opencode
     ../modules/pandoc
     ../modules/pipewire
     ../modules/polybar
@@ -54,7 +55,7 @@
           "${pkgs.i3lock}/bin/i3lock --nofork --color=000000 --ignore-empty-password --show-failed-attempts";
         inactiveInterval = 15;
       };
-      poweralertd.enable = true;
+      poweralertd.enable = false;
     };
   };
 }
