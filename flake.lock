@@ -876,14 +876,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1769946812,
-        "narHash": "sha256-8AGC0Hgolc6OWEqkVHqkl4sMqYb9FVqLv/OYW6wqpm4=",
-        "path": "/home/hippoid/fun/video-downloader",
-        "type": "path"
+        "lastModified": 1770080692,
+        "narHash": "sha256-InUo5aUgTWpcltwhwKtAOB4NYmUjtoyTc5+cogtXxZY=",
+        "ref": "refs/heads/main",
+        "rev": "a4aef7bb358e102f2c14f160561473c785bbb8c0",
+        "revCount": 14,
+        "type": "git",
+        "url": "file:/home/hippoid/fun/video-downloader"
       },
       "original": {
-        "path": "/home/hippoid/fun/video-downloader",
-        "type": "path"
+        "type": "git",
+        "url": "file:/home/hippoid/fun/video-downloader"
       }
     },
     "videoChapter": {
