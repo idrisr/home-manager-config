@@ -12,6 +12,7 @@
     ../modules/haskeline
     ../modules/hyprcursor
     ../modules/hyprland
+    ../modules/hyprvoice
     ../modules/kitty
     ../modules/lsd
     ../modules/mpv

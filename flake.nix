@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprvoice = {
+      url = "git+file:/home/hippoid/fun/hyprvoice";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,12 +65,17 @@
         })
         inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
+
         # (import ./modules/xournal)
         # (import ./modules/tikzit)
+
         (import ./modules/kdenlive)
         # (import ./modules/brave)
+        inputs.urlq.overlays.default
         inputs.rofi.overlays.all
         inputs.zettel.overlays.zettel
+        inputs.hyprvoice.overlays.default
+
         (self: super: {
           latexindent = super.writeShellScriptBin "latexindent" ''
             exec ${super.latexindent}/bin/latexindent -m "$@"

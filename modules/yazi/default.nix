@@ -6,13 +6,15 @@
         piper = pkgs.yaziPlugins.piper;
         ouch = pkgs.yaziPlugins.ouch;
         miller = pkgs.yaziPlugins.miller;
+        video-chapter = ./plugins/video-chapter.yazi/main.lua;
+        pdf-fit = ./plugins/pdf-fit.yazi/main.lua;
       };
 
       enable = true;
       settings = {
-        ratio = [ 1 1 6 ];
         mgr = {
           show_hidden = true;
+          ratio = [ 1 2 4 ];
           preview = {
             max_width = 1200;
             max_height = 1000;
@@ -27,17 +29,17 @@
 
         open = {
           prepend_rules = [
-            { name = "*.srt"; use = "edit"; }
+            { url = "*.srt"; use = "edit"; }
           ];
         };
 
         plugin = {
           prepend_previewers = [
             {
-              name = "*.srt";
-              # run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
-              run = "piper -- ${pkgs.sorta}/bin/sorta --stdin";
+              url = "*.srt";
+              run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
             }
+            { mime = "video/*"; run = "video-chapter"; }
             { mime = "application/*zip"; run = "ouch"; }
             { mime = "application/x-tar"; run = "ouch"; }
             { mime = "application/x-bzip2"; run = "ouch"; }
@@ -65,7 +67,6 @@
           { on = [ "g" "p" ]; run = "cd ~/documents/papers/"; }
           { on = [ "g" "r" ]; run = "cd ~/roam-export/"; }
           { on = [ "g" "s" ]; run = "cd ~/screenshots/"; }
-          { on = [ "g" "m" ]; run = "cd /var/lib/pinchflat/media"; }
           { on = [ "g" "f" ]; run = "cd ~/.config/fabric/"; }
           {
             on = [ "g" "L" ];

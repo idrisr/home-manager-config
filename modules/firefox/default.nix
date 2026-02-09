@@ -19,6 +19,24 @@
           definedAliases = [ "ar" ];
         };
 
+        "arxiv" = {
+          urls = [{
+            template = "https://arxiv.org/search/";
+            params = [
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+              {
+                name = "searchtype";
+                value = "title";
+              }
+            ];
+          }];
+          definedAliases = [ "ax" ];
+        };
+
+
         "amazon" = {
           urls = [{
             template = "https://www.amazon.com/s";
