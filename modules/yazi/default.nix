@@ -1,13 +1,12 @@
 { pkgs, ... }: {
   config = {
-    home.packages = with pkgs; [ ouch miller ];
+    home.packages = with pkgs; [ ouch pdftc poppler-utils ];
     programs.yazi = {
       plugins = {
         piper = pkgs.yaziPlugins.piper;
         ouch = pkgs.yaziPlugins.ouch;
-        miller = pkgs.yaziPlugins.miller;
-        video-chapter = ./plugins/video-chapter.yazi/main.lua;
-        pdf-fit = ./plugins/pdf-fit.yazi/main.lua;
+        video-chapter = ./plugins/video-chapter.yazi;
+        pdf-fit = ./plugins/pdf-fit.yazi;
       };
 
       enable = true;
@@ -39,7 +38,13 @@
               url = "*.srt";
               run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
             }
+            {
+              mime = "text/csv";
+              run = ''piper -- ${pkgs.miller}/bin/mlr --icsv --opprint cat -- "$1"'';
+            }
+
             { mime = "video/*"; run = "video-chapter"; }
+            { mime = "application/pdf"; run = "pdf-fit"; }
             { mime = "application/*zip"; run = "ouch"; }
             { mime = "application/x-tar"; run = "ouch"; }
             { mime = "application/x-bzip2"; run = "ouch"; }
@@ -51,7 +56,6 @@
             { mime = "application/x-zstd"; run = "ouch"; }
             { mime = "application/zstd"; run = "ouch"; }
             { mime = "application/java-archive"; run = "ouch"; }
-            { mime = "text/csv"; run = "miller"; }
           ];
         };
       };
@@ -59,6 +63,7 @@
       keymap = {
         mgr.prepend_keymap = [
           { run = "quit"; on = [ "q" ]; }
+          { on = [ "p" ]; run = "plugin pdf-fit"; }
           { on = [ "g" "v" ]; run = "cd ~/videos"; }
           { on = [ "g" "f" ]; run = "cd ~/fun"; }
           { on = [ "g" "b" ]; run = "cd ~/books"; }
