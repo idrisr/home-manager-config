@@ -1,4 +1,5 @@
 {
+  "Revision": "0.6.6.2",
   "Profiles": [
     {
       "Tablet": "Wacom CTL-4100WL",
@@ -113,40 +114,42 @@
         ],
         "MouseButtons": [],
         "MouseScrollUp": null,
-        "MouseScrollDown": null
+        "MouseScrollDown": null,
+        "DisablePressure": false,
+        "DisableTilt": false
       }
     },
     {
       "Tablet": "XP-Pen Deco 01 V3",
       "OutputMode": {
-        "Path": "OpenTabletDriver.Desktop.Output.LinuxArtistMode",
+        "Path": "OpenTabletDriver.Desktop.Output.AbsoluteMode",
         "Settings": [],
         "Enable": true
       },
       "Filters": [],
       "AbsoluteModeSettings": {
         "Display": {
-          "Width": 2256.0,
+          "Width": 1504.0,
           "Height": 1504.0,
-          "X": 1128.0,
+          "X": 752.0,
           "Y": 752.0,
           "Rotation": 0.0
         },
         "Tablet": {
-          "Width": 254.0,
+          "Width": 158.75,
           "Height": 158.75,
           "X": 127.0,
           "Y": 79.375,
-          "Rotation": 0.0
+          "Rotation": 270.0
         },
         "EnableClipping": true,
-        "EnableAreaLimiting": false,
-        "LockAspectRatio": false
+        "EnableAreaLimiting": true,
+        "LockAspectRatio": true
       },
       "RelativeModeSettings": {
         "XSensitivity": 10.0,
         "YSensitivity": 10.0,
-        "RelativeRotation": 0.0,
+        "RelativeRotation": 270.0,
         "RelativeResetDelay": "00:00:00.1000000"
       },
       "Bindings": {
@@ -165,102 +168,41 @@
         "EraserButton": null,
         "PenButtons": [
           {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
+            "Path": "OpenTabletDriver.Desktop.Binding.LinuxArtistMode.LinuxArtistModeButtonBinding",
             "Settings": [
               {
-                "Property": "Keys",
-                "Value": "Control+D1"
+                "Property": "Button",
+                "Value": "Pen Button 1"
               }
             ],
             "Enable": true
           },
           {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
+            "Path": "OpenTabletDriver.Desktop.Binding.LinuxArtistMode.LinuxArtistModeButtonBinding",
             "Settings": [
               {
-                "Property": "Keys",
-                "Value": "Control+D4"
+                "Property": "Button",
+                "Value": "Pen Button 2"
               }
             ],
             "Enable": true
           }
         ],
         "AuxButtons": [
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D1"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D2"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D3"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D4"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D5"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D6"
-              }
-            ],
-            "Enable": true
-          },
-          {
-            "Path": "OpenTabletDriver.Desktop.Binding.MultiKeyBinding",
-            "Settings": [
-              {
-                "Property": "Keys",
-                "Value": "Control+D7"
-              }
-            ],
-            "Enable": true
-          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ],
         "MouseButtons": [],
         "MouseScrollUp": null,
-        "MouseScrollDown": null
+        "MouseScrollDown": null,
+        "DisablePressure": false,
+        "DisableTilt": false
       }
     }
   ],
