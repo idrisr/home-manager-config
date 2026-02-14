@@ -63,7 +63,7 @@
       keymap = {
         mgr.prepend_keymap = [
           { run = "quit"; on = [ "q" ]; }
-          { on = [ "p" ]; run = "plugin pdf-fit"; }
+          # { on = [ "p" ]; run = "plugin pdf-fit"; }
           { on = [ "g" "v" ]; run = "cd ~/videos"; }
           { on = [ "g" "f" ]; run = "cd ~/fun"; }
           { on = [ "g" "b" ]; run = "cd ~/books"; }

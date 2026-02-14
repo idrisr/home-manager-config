@@ -47,6 +47,7 @@ in
       ./obsidian.nix
       ./oil.nix
       ./ollama.nix
+      ./opencode.nix
       ./parinfer.nix
       ./persistence.nix
       ./project.nix
