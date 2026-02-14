@@ -239,13 +239,18 @@
       userChrome = ''
       '';
 
-      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-        # ublock-origin
-        # sponsorblock
-        darkreader
-        # tridactyl
-        # youtube-shorts-block
-      ];
+      extensions.packages =
+        let
+          system = pkgs.stdenv.hostPlatform.system;
+          addonsForSystem = inputs.firefox-addons.packages.${system} or null;
+        in
+        if addonsForSystem == null then [ ] else with addonsForSystem; [
+          # ublock-origin
+          # sponsorblock
+          darkreader
+          # tridactyl
+          # youtube-shorts-block
+        ];
     };
   };
 }

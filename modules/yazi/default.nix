@@ -1,6 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+let
+  pkgIfExists = name: if builtins.hasAttr name pkgs then [ pkgs.${name} ] else [ ];
+in {
   config = {
-    home.packages = with pkgs; [ ouch pdftc poppler-utils ];
+    home.packages =
+      pkgIfExists "ouch"
+      ++ pkgIfExists "pdftc"
+      ++ pkgIfExists "poppler-utils";
     programs.yazi = {
       plugins = {
         piper = pkgs.yaziPlugins.piper;
@@ -33,30 +39,34 @@
         };
 
         plugin = {
-          prepend_previewers = [
-            {
-              url = "*.srt";
-              run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
-            }
-            {
-              mime = "text/csv";
-              run = ''piper -- ${pkgs.miller}/bin/mlr --icsv --opprint cat -- "$1"'';
-            }
-
-            { mime = "video/*"; run = "video-chapter"; }
-            { mime = "application/pdf"; run = "pdf-fit"; }
-            { mime = "application/*zip"; run = "ouch"; }
-            { mime = "application/x-tar"; run = "ouch"; }
-            { mime = "application/x-bzip2"; run = "ouch"; }
-            { mime = "application/x-7z-compressed"; run = "ouch"; }
-            { mime = "application/x-rar"; run = "ouch"; }
-            { mime = "application/vnd.rar"; run = "ouch"; }
-            { mime = "application/x-xz"; run = "ouch"; }
-            { mime = "application/xz"; run = "ouch"; }
-            { mime = "application/x-zstd"; run = "ouch"; }
-            { mime = "application/zstd"; run = "ouch"; }
-            { mime = "application/java-archive"; run = "ouch"; }
-          ];
+          prepend_previewers =
+            lib.optionals (pkgs ? sorta) [
+              {
+                url = "*.srt";
+                run = ''piper -- ${pkgs.sorta}/bin/sorta --input "$1"'';
+              }
+            ]
+            ++ lib.optionals (pkgs ? miller) [
+              {
+                mime = "text/csv";
+                run = ''piper -- ${pkgs.miller}/bin/mlr --icsv --opprint cat -- "$1"'';
+              }
+            ]
+            ++ [
+              { mime = "video/*"; run = "video-chapter"; }
+              { mime = "application/pdf"; run = "pdf-fit"; }
+              { mime = "application/*zip"; run = "ouch"; }
+              { mime = "application/x-tar"; run = "ouch"; }
+              { mime = "application/x-bzip2"; run = "ouch"; }
+              { mime = "application/x-7z-compressed"; run = "ouch"; }
+              { mime = "application/x-rar"; run = "ouch"; }
+              { mime = "application/vnd.rar"; run = "ouch"; }
+              { mime = "application/x-xz"; run = "ouch"; }
+              { mime = "application/xz"; run = "ouch"; }
+              { mime = "application/x-zstd"; run = "ouch"; }
+              { mime = "application/zstd"; run = "ouch"; }
+              { mime = "application/java-archive"; run = "ouch"; }
+            ];
         };
       };
 
@@ -73,6 +83,8 @@
           { on = [ "g" "r" ]; run = "cd ~/roam-export/"; }
           { on = [ "g" "s" ]; run = "cd ~/screenshots/"; }
           { on = [ "g" "f" ]; run = "cd ~/.config/fabric/"; }
+        ]
+        ++ lib.optionals (pkgs.stdenv.isLinux && pkgs ? sorta) [
           {
             on = [ "g" "L" ];
             run = ''shell '${pkgs.sorta}/bin/sorta --input "$1" | wl-copy' '';

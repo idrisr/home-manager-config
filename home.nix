@@ -6,8 +6,11 @@ let lib = pkgs.lib; in
     ./profiles/base.nix
     ./modules/nixvim/config
     inputs.nixvim.homeModules.nixvim
-  ] ++ lib.optionals graphical [
+  ]
+  ++ lib.optionals graphical [
     ./profiles/desktop.nix
+  ]
+  ++ lib.optionals (graphical && pkgs.stdenv.isLinux) [
     inputs.stylix.homeModules.stylix
   ];
 

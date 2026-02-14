@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   config = {
     programs.anki = {
@@ -7,7 +8,7 @@
         username = "hippoid";
         autoSync = true;
         syncMedia = true;
-        keyFile = "/home/hippoid/.ankiSyncKey";
+        keyFile = "${config.home.homeDirectory}/.ankiSyncKey";
       };
     };
   };

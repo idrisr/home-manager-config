@@ -1,11 +1,14 @@
-{ graphical, pkgs, lib, ... }:
-{
+{ config, graphical, pkgs, lib, ... }:
+let
+  homeDir = config.home.homeDirectory;
+  isLinux = pkgs.stdenv.isLinux;
+in {
   config = {
     programs.vifm = {
       enable = false;
 
-      extraConfig = lib.concatStringsSep "\n"
-        ([
+      extraConfig = lib.concatStringsSep "\n" (
+        [
           (builtins.readFile ./favicons.vifm)
           ''
             if !has('win')
@@ -25,13 +28,6 @@
             mark v ~/videos
             mark w ~/downloads
 
-            fileviewer */ ${pkgs.lsd}/bin/lsd --tree --depth 2 --almost-all --ignore-glob .git %c
-            fileviewer {*.drv} ${pkgs.nix-derivation}/bin/pretty-derivation < %c
-            fileviewer {*.zip} ${pkgs.unzip}/bin/unzip -l
-            fileviewer {*.iso} ${pkgs.cdrtools}/bin/isoinfo -i %f -d
-
-            fileviewer {*.srt} ${pkgs.srtcpy}/bin/srtcpy %f, bat %f
-
             nnoremap w :view<cr>
             nnoremap sv :source $MYVIFMRC<cr>
             nnoremap s :sort <cr>
@@ -40,14 +36,24 @@
             nnoremap I cW<c-a>
             nnoremap A cW<c-u>
             nnoremap pa vifm-q_a
-            autocmd DirEnter /home/hippoid/screenshots set sort=+mtime
-            autocmd DirEnter !/home/hippoid/screenshots set sort=+name
+            autocmd DirEnter ${homeDir}/screenshots set sort=+mtime
+            autocmd DirEnter !${homeDir}/screenshots set sort=+name
           ''
-        ] ++
-        (
-          let vp = "${pkgs.visualpreview}/bin/visualpreview";
-          in
-          lib.lists.optional graphical
+        ]
+        ++ lib.optionals isLinux [
+          ''
+            fileviewer */ ${pkgs.lsd}/bin/lsd --tree --depth 2 --almost-all --ignore-glob .git %c
+            fileviewer {*.drv} ${pkgs.nix-derivation}/bin/pretty-derivation < %c
+            fileviewer {*.zip} ${pkgs.unzip}/bin/unzip -l
+            fileviewer {*.iso} ${pkgs.cdrtools}/bin/isoinfo -i %f -d
+
+            fileviewer {*.srt} ${pkgs.srtcpy}/bin/srtcpy %f, bat %f
+          ''
+        ]
+        ++ lib.optionals (graphical && isLinux) (
+          let
+            vp = "${pkgs.visualpreview}/bin/visualpreview";
+          in [
             ''
               filextype *wav,*mp3,*mkv,*webm,*mp4,*mov,*avi,*m4v ${pkgs.mpv}/bin/mpv --force-window %f 2>/dev/null &
               filextype <image/*> {View in sxiv} sxiv -ia %f &
@@ -62,8 +68,9 @@
               fileviewer {*.mp3, *.m4a} ${pkgs.audioPreview}/bin/audioPreview
               nnoremap L :!${pkgs.srtcpy}/bin/srtcpy %f | ${lib.getExe pkgs.wayclip}<cr>
             ''
+          ]
         )
-        );
+      );
 
       # fileviewer {*.pdf} ${vp} pdf %pw %ph %px %py %c %N %pc ${vp} clear, ${pkgs.poppler_utils}/bin/pdfinfo, ${pkgs.pdftc}/bin/pdftc
       # opts = {
@@ -86,6 +93,6 @@
       # # wildstyle = "popup";
       # };
     };
-    home.packages = with pkgs; [ nix-derivation ];
+    home.packages = lib.optionals (pkgs ? nix-derivation) [ pkgs.nix-derivation ];
   };
 }

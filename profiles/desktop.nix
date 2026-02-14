@@ -1,46 +1,46 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./base.nix
     ../modules/alacritty
     ../modules/anki
     ../modules/ctags
-    ../modules/dunst
     ../modules/fabric
-    ../modules/firefox
-    ../modules/flameshot
     ../modules/github
     ../modules/haskeline
-    ../modules/hyprcursor
-    ../modules/hyprland
-    ../modules/hyprvoice
     ../modules/kitty
     ../modules/lsd
     ../modules/mpv
-    ../modules/obs
-    ../modules/opentablet
     ../modules/opencode
     ../modules/pandoc
+    ../modules/qutebrowser
+    ../modules/vscode
+    ../modules/yazi
+    ../modules/yt-dlp
+    ../modules/zoxide
+  ]
+  ++ lib.optionals pkgs.stdenv.isLinux [
+    ../modules/dunst
+    ../modules/firefox
+    ../modules/flameshot
+    ../modules/hyprcursor
+    ../modules/hyprland
+    ../modules/hyprvoice
+    ../modules/obs
+    ../modules/opentablet
     ../modules/pipewire
     ../modules/polybar
     ../modules/qt
-    ../modules/qutebrowser
     # ../modules/rofi
-    ../modules/vscode
+    ../modules/urlq
     ../modules/waybar
     ../modules/xdg
-    ../modules/urlq
-    ../modules/yazi
-    ../modules/yt-dlp
     ../modules/zathura
-    ../modules/zoxide
   ];
 
   config = {
-    home = {
-      username = "hippoid";
-      homeDirectory = "/home/hippoid";
-      packages = import ./desktop-packages.nix pkgs;
-    };
+    home.packages = import ./desktop-packages.nix pkgs;
+  }
+  // lib.optionalAttrs pkgs.stdenv.isLinux {
     xresources.properties = {
       "Xft.autohint" = 0;
       "Xft.hintstyle" = "hintfull";

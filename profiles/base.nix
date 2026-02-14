@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  username = "hippoid";
+  homeDirectory =
+    if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+in {
   imports = [
     ../modules/atuin
     ../modules/bat
@@ -18,8 +23,7 @@
   config = {
     home = {
       stateVersion = "25.05";
-      username = "hippoid";
-      homeDirectory = "/home/hippoid";
+      inherit username homeDirectory;
       packages = import ./base-packages.nix pkgs;
     };
 

@@ -424,11 +424,11 @@
         "rev": "44ffaca34f06c62cd93fe9207bc3caec303e405a",
         "revCount": 3,
         "type": "git",
-        "url": "file:/home/hippoid/fun/hyprvoice"
+        "url": "file:../fun/hyprvoice"
       },
       "original": {
         "type": "git",
-        "url": "file:/home/hippoid/fun/hyprvoice"
+        "url": "file:../fun/hyprvoice"
       }
     },
     "idris-pkgs": {
@@ -960,11 +960,11 @@
         "rev": "5b7ab322e2a6f0d1364bdd7ceac80b11c8a3bb2c",
         "revCount": 17,
         "type": "git",
-        "url": "file:/home/hippoid/fun/video-downloader"
+        "url": "file:../fun/video-downloader"
       },
       "original": {
         "type": "git",
-        "url": "file:/home/hippoid/fun/video-downloader"
+        "url": "file:../fun/video-downloader"
       }
     },
     "videoChapter": {

@@ -4,12 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     urlq = {
-      url = "git+file:/home/hippoid/fun/video-downloader";
+      url = "git+file:../fun/video-downloader";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprvoice = {
-      url = "git+file:/home/hippoid/fun/hyprvoice";
+      url = "git+file:../fun/hyprvoice";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -45,96 +45,113 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
+      systems = [
+        "aarch64-darwin"
+        "x86_64-linux"
+      ];
 
-      makeHomeModules = { pkgs, inputs, graphical }:
-        [
-          (import ./home.nix { inherit pkgs inputs graphical; })
-        ];
-
-      modules = makeHomeModules {
-        inherit pkgs inputs;
-        graphical = true;
+      stdenvSystemAlias = final: prev: {
+        stdenv = prev.stdenv // {
+          system = prev.stdenv.hostPlatform.system;
+        };
+        system = prev.stdenv.hostPlatform.system;
       };
 
-      overlayList = [
+      baseOverlays = [
+        stdenvSystemAlias
         (self: super: {
           latexindent = super.writeShellScriptBin "latexindent" ''
             exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
           '';
         })
         inputs.idris-pkgs.overlays.default
-        (import ./modules/qrcp "6969")
+      ];
 
+      linuxOverlays = [
+        (import ./modules/qrcp "6969")
         (import ./modules/kdenlive)
         inputs.urlq.overlays.default
         inputs.rofi.overlays.all
         inputs.zettel.overlays.zettel
         inputs.hyprvoice.overlays.default
-
-        (self: super: {
-          latexindent = super.writeShellScriptBin "latexindent" ''
-            exec ${super.latexindent}/bin/latexindent -m "$@"
-          '';
-        })
       ];
 
+      overlayListFor = system:
+        baseOverlays
+        ++ nixpkgs.lib.optionals (nixpkgs.lib.strings.hasSuffix "linux" system) linuxOverlays
+        ++ [
+          (self: super: {
+            latexindent = super.writeShellScriptBin "latexindent" ''
+              exec ${super.latexindent}/bin/latexindent -m "$@"
+            '';
+          })
+        ];
+
       overlays = {
-        default = nixpkgs.lib.composeManyExtensions overlayList;
+        default = nixpkgs.lib.composeManyExtensions (
+          baseOverlays
+          ++ map (overlay: final: prev: if prev.stdenv.isLinux then overlay final prev else { })
+            linuxOverlays
+          ++ [
+            (self: super: {
+              latexindent = super.writeShellScriptBin "latexindent" ''
+                exec ${super.latexindent}/bin/latexindent -m "$@"
+              '';
+            })
+          ]
+        );
       };
 
-      pkgs = import nixpkgs {
+      pkgsFor = system: import nixpkgs {
         inherit system;
-        overlays = overlayList;
+        overlays = overlayListFor system;
         config.allowUnfree = true;
       };
 
+      mkHome = { system, graphical }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor system;
+          modules = [
+            ./home.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit graphical;
+            pkgs = pkgsFor system;
+          };
+        };
+
+      homeConfigEntries = system: {
+        "graphical-${system}" = mkHome { inherit system; graphical = true; };
+        "headless-${system}" = mkHome { inherit system; graphical = false; };
+      };
+
+      homeConfigurationsBySystem = builtins.foldl'
+        (acc: system: acc // homeConfigEntries system)
+        { }
+        systems;
+
     in
-    rec
     {
-
       inherit overlays;
-      homeConfigurations = {
-        "graphical" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
 
-          modules = [
-            (import ./home.nix {
-              inherit pkgs inputs;
-              graphical = true;
-            })
-          ];
-
-          extraSpecialArgs = {
-            inherit inputs;
-            graphical = true;
-          };
-        };
-
-        "headless" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            (import ./home.nix {
-              inherit pkgs inputs;
-              graphical = false;
-            })
-          ];
-
-          extraSpecialArgs = {
-            inherit inputs;
-            graphical = false;
-          };
-        };
+      homeConfigurations = homeConfigurationsBySystem // {
+        graphical = homeConfigurationsBySystem."graphical-x86_64-linux";
+        headless = homeConfigurationsBySystem."headless-x86_64-linux";
       };
 
-      packages.${system} = {
-        headless = homeConfigurations.headless.activationPackage;
-        graphical = homeConfigurations.graphical.activationPackage;
-      };
+      packages = nixpkgs.lib.genAttrs systems (system: {
+        headless = homeConfigurationsBySystem."headless-${system}".activationPackage;
+        graphical = homeConfigurationsBySystem."graphical-${system}".activationPackage;
+      });
 
-      homeManagerModules.base = {
-        imports = modules;
-      };
+      checks = nixpkgs.lib.genAttrs systems (system: {
+        home-graphical =
+          homeConfigurationsBySystem."graphical-${system}".activationPackage;
+        home-headless =
+          homeConfigurationsBySystem."headless-${system}".activationPackage;
+      });
 
       nixosModules.graphical = let graphical = true; in {
         home-manager = {

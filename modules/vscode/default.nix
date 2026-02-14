@@ -2,7 +2,7 @@
   config = {
     programs.vscode = {
       enable = false;
-      package = pkgs.vscode.fhs;
+      package = if pkgs.stdenv.isLinux then pkgs.vscode.fhs else pkgs.vscode;
     };
   };
 }

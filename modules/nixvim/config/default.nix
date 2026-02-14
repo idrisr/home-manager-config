@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   concatFiles = files:
     let
@@ -68,22 +68,25 @@ in
     viAlias = true;
     vimAlias = true;
 
-    extraPlugins = with pkgs.vimPlugins; [
-      fzf-vim # switch to fzf-lua?
-      img-clip-nvim
-      julia-vim
-      kmonad-vim
-      lean-nvim
-      matchit-zip
-      nvim-dap-ui
-      nvim-treesitter-parsers.yuck
-      outline-nvim
-      pkgs.zettel
-      telescope_hoogle
-      vim-pencil
-      vim-sqls
-      yuck-vim
-    ];
+    extraPlugins =
+      (with pkgs.vimPlugins; [
+        fzf-vim # switch to fzf-lua?
+        img-clip-nvim
+        julia-vim
+        kmonad-vim
+        lean-nvim
+        matchit-zip
+        nvim-dap-ui
+        nvim-treesitter-parsers.yuck
+        outline-nvim
+      ])
+      ++ lib.optionals (pkgs ? zettel) [ pkgs.zettel ]
+      ++ (with pkgs.vimPlugins; [
+        telescope_hoogle
+        vim-pencil
+        vim-sqls
+        yuck-vim
+      ]);
 
     extraConfigVim = concatFiles [ ./vimrc ];
     extraConfigLua = concatFiles [

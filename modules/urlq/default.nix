@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [
     inputs.urlq.lib.urlq.homeManagerModule
@@ -8,7 +8,7 @@
     enable = true;
     transcribe = {
       enable = true;
-      watchDir = "/home/hippoid/videos";
+      watchDir = "${config.home.homeDirectory}/videos";
     };
   };
 }
