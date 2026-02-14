@@ -57,7 +57,7 @@
         graphical = true;
       };
 
-      overlays = [
+      overlayList = [
         (self: super: {
           latexindent = super.writeShellScriptBin "latexindent" ''
             exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
@@ -66,11 +66,7 @@
         inputs.idris-pkgs.overlays.default
         (import ./modules/qrcp "6969")
 
-        # (import ./modules/xournal)
-        # (import ./modules/tikzit)
-
         (import ./modules/kdenlive)
-        # (import ./modules/brave)
         inputs.urlq.overlays.default
         inputs.rofi.overlays.all
         inputs.zettel.overlays.zettel
@@ -83,9 +79,13 @@
         })
       ];
 
+      overlays = {
+        default = nixpkgs.lib.composeManyExtensions overlayList;
+      };
+
       pkgs = import nixpkgs {
         inherit system;
-        inherit overlays;
+        overlays = overlayList;
         config.allowUnfree = true;
       };
 
