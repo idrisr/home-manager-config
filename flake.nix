@@ -121,22 +121,16 @@
         { }
         systems;
 
-    in
-    let
-      currentGraphical = "graphical-${builtins.currentSystem}";
-      currentHeadless = "headless-${builtins.currentSystem}";
     in {
       inherit overlays;
 
       homeConfigurations = homeConfigurationsBySystem // {
-        graphical =
-          if builtins.hasAttr currentGraphical homeConfigurationsBySystem
-          then homeConfigurationsBySystem.${currentGraphical}
-          else homeConfigurationsBySystem."graphical-x86_64-linux";
-        headless =
-          if builtins.hasAttr currentHeadless homeConfigurationsBySystem
-          then homeConfigurationsBySystem.${currentHeadless}
-          else homeConfigurationsBySystem."headless-x86_64-linux";
+        graphical = homeConfigurationsBySystem."graphical-x86_64-linux";
+        graphical-darwin = homeConfigurationsBySystem."graphical-aarch64-darwin";
+        graphical-linux = homeConfigurationsBySystem."graphical-x86_64-linux";
+        headless = homeConfigurationsBySystem."headless-x86_64-linux";
+        headless-darwin = homeConfigurationsBySystem."headless-aarch64-darwin";
+        headless-linux = homeConfigurationsBySystem."headless-x86_64-linux";
       };
 
       packages = nixpkgs.lib.genAttrs systems (system: {
