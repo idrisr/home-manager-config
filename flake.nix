@@ -3,15 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    urlq = {
-      url = "git+file:../fun/video-downloader";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprvoice = {
-      url = "git+file:../fun/hyprvoice";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -70,10 +61,8 @@
       linuxOverlays = [
         (import ./modules/qrcp "6969")
         (import ./modules/kdenlive)
-        inputs.urlq.overlays.default
         inputs.rofi.overlays.all
         inputs.zettel.overlays.zettel
-        inputs.hyprvoice.overlays.default
       ];
 
       overlayListFor = system:

@@ -1,8 +1,8 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.hyprvoice.homeManagerModules.default
+    # inputs.hyprvoice.homeManagerModules.default
   ];
 
-  services.hyprvoice.enable = true;
+  # services.hyprvoice.enable = true;
 }
