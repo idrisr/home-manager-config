@@ -12,7 +12,7 @@
           embed-chapters = true;
           downloader = "aria2c";
           downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
-          output = ''%(uploader)s-%(title)s-[%(id)s].%(ext)s'';
+          output = ''%(release_date)s-%(title)s-%(view_count)s.%(ext)s'';
           restrict-filenames = true;
           sub-langs = "en";
           write-subs = true;
