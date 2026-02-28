@@ -1,6 +1,9 @@
 {
   lsp.servers = {
-    hls.enable = true;
+    hls = {
+      enable = true;
+      package = null;
+    };
     bashls.enable = true;
     leanls.enable = true;
     nil_ls = {

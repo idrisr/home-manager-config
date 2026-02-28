@@ -25,13 +25,14 @@ let
     books
     booksDesktopItem
     brave
+    droidcam
     cryptsetup
     obsidian
     gimp
     gradia
     inotify-tools
     # kdePackages.krohnkite
-    # kdePackages.kdenlive
+    kdePackages.kdenlive
     keepassxc
     libreoffice
     mksession

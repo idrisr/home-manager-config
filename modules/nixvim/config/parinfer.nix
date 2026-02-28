@@ -1,5 +1,5 @@
 {
   plugins.parinfer-rust = {
-    enable = true;
+    enable = false;
   };
 }
