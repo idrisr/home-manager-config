@@ -1,6 +1,26 @@
 { pkgs, inputs, ... }:
 
+let
+  addonId = "urlq@idrisraja.com";
+  firefoxAppId = "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
+  urlqExtension = pkgs.stdenvNoCC.mkDerivation {
+    pname = "urlq-capture";
+    version = "0.1.0";
+    src = ./2c0afd48075644e7b308-0.1.0.xpi;
+    dontUnpack = true;
+    installPhase = ''
+      install -Dm444 "$src" \
+        "$out/share/mozilla/extensions/${firefoxAppId}/${addonId}.xpi"
+    '';
+
+    passthru = {
+      inherit addonId;
+    };
+  };
+
+in
 {
+
   programs.firefox = {
     enable = true;
     profiles.hippoid = {
@@ -239,6 +259,7 @@
       userChrome = ''
       '';
 
+
       extensions.packages =
         let
           system = pkgs.stdenv.hostPlatform.system;
@@ -246,10 +267,10 @@
         in
         if addonsForSystem == null then [ ] else with addonsForSystem; [
           # ublock-origin
-          # sponsorblock
           darkreader
-          # tridactyl
-          # youtube-shorts-block
+          sponsorblock
+          urlqExtension
+          youtube-shorts-block
         ];
     };
   };
