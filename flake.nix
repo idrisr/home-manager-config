@@ -37,10 +37,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zettel = {
-      url = "github:idrisr/zettel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
@@ -84,7 +80,6 @@
         (import ./modules/kdenlive)
         inputs.urlq.overlays.default
         inputs.rofi.overlays.all
-        inputs.zettel.overlays.zettel
         inputs.hyprvoice.overlays.default
       ];
 

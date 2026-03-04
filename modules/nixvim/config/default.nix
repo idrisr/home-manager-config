@@ -79,8 +79,8 @@ in
         nvim-dap-ui
         nvim-treesitter-parsers.yuck
         outline-nvim
+        pkgs.zettel
       ])
-      ++ lib.optionals (pkgs ? zettel) [ pkgs.zettel ]
       ++ (with pkgs.vimPlugins; [
         telescope_hoogle
         vim-pencil
