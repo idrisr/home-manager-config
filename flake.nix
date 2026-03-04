@@ -64,6 +64,18 @@
             exec ${super.texlivePackages.latexindent}/bin/latexindent --modifylinebreaks "$@"
           '';
         })
+        (self: super: {
+          yt-dlp = super.yt-dlp.overrideAttrs (old: rec {
+            # Keep version in sync with nixpkgs yt-dlp for easier updates.
+            version = "2026.03.03";
+            src = super.fetchFromGitHub {
+              owner = "yt-dlp";
+              repo = "yt-dlp";
+              rev = version;
+              hash = "sha256-BPZzMT1IrZvgva/m5tYMaDYoUaP3VmpmcYeOUOwuoUY=";
+            };
+          });
+        })
         inputs.idris-pkgs.overlays.default
       ];
 
