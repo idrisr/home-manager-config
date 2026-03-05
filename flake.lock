@@ -168,7 +168,7 @@
     },
     "flake-utils_10": {
       "inputs": {
-        "systems": "systems_11"
+        "systems": "systems_10"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -279,11 +279,11 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
         "type": "github"
       },
       "original": {
@@ -315,11 +315,11 @@
         "systems": "systems_9"
       },
       "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -386,6 +386,7 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
+          "idris-pkgs",
           "hyprvoice",
           "nixpkgs"
         ]
@@ -408,50 +409,52 @@
     "home-manager_3": {
       "inputs": {
         "nixpkgs": [
+          "idris-pkgs",
           "urlq",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1769580047,
-        "narHash": "sha256-tNqCP/+2+peAXXQ2V8RwsBkenlfWMERb+Uy6xmevyhM=",
+        "lastModified": 1772633327,
+        "narHash": "sha256-jl+DJB2DUx7EbWLRng+6HNWW/1/VQOnf0NsQB4PlA7I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "366d78c2856de6ab3411c15c1cb4fb4c2bf5c826",
+        "rev": "5a75730e6f21ee624cbf86f4915c6e7489c74acc",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-25.11",
         "repo": "home-manager",
         "type": "github"
       }
     },
     "hyprvoice": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "home-manager": "home-manager_2",
         "nixpkgs": [
+          "idris-pkgs",
           "nixpkgs"
         ]
       },
       "locked": {
         "lastModified": 1772549305,
         "narHash": "sha256-9dAlgjyiPLOteR2xt961RUEK1MB1Z7bcJ2gOVBJC+io=",
-        "ref": "refs/heads/main",
+        "owner": "idrisr",
+        "repo": "hyprvoice",
         "rev": "402de0e5bcf5167e077f12276674b614d78c4eac",
-        "revCount": 4,
-        "type": "git",
-        "url": "file:../fun/hyprvoice"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:../fun/hyprvoice"
+        "owner": "idrisr",
+        "repo": "hyprvoice",
+        "type": "github"
       }
     },
     "idris-pkgs": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
+        "hyprvoice": "hyprvoice",
         "mksession": "mksession",
         "newcover": "newcover",
         "nixpkgs": [
@@ -459,16 +462,18 @@
         ],
         "pdftc": "pdftc",
         "presentationVideoManager": "presentationVideoManager",
+        "rofi": "rofi",
         "sorta": "sorta",
+        "urlq": "urlq",
         "videoChapter": "videoChapter",
         "zettel": "zettel"
       },
       "locked": {
-        "lastModified": 1772662603,
-        "narHash": "sha256-gvOCE7m8TxmDvY/btPLM4sY/nJPfhDVJgpLn9iPP82g=",
+        "lastModified": 1772671483,
+        "narHash": "sha256-J+iqemLP36sSrlvaoPanTWKwmBlVJwnG3N38H3uV0vQ=",
         "owner": "idrisr",
         "repo": "idris-pkgs",
-        "rev": "8c5884316f39ece7a2e536988a4238fcae063b8a",
+        "rev": "4f81f2f6eda5d5c51e764defcde3813c15dd3ecb",
         "type": "github"
       },
       "original": {
@@ -543,7 +548,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_10"
+        "systems": "systems_11"
       },
       "locked": {
         "lastModified": 1772402258,
@@ -630,17 +635,18 @@
     },
     "rofi": {
       "inputs": {
-        "flake-utils": "flake-utils_10",
+        "flake-utils": "flake-utils_7",
         "nixpkgs": [
+          "idris-pkgs",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1745924760,
-        "narHash": "sha256-ttBs8xgpHN84rTFybou6XVQggM0VnLG9kGQv3EejtLU=",
+        "lastModified": 1772669274,
+        "narHash": "sha256-PJjKjp23cIUPwfTRscJl3HBAFUIt2wi3X1ir/yEWYvE=",
         "owner": "idrisr",
         "repo": "rofi-picker",
-        "rev": "3180d6d71e6a113578643646736f485dae1d11d2",
+        "rev": "3d9c0d67c8d432a275bdfbaa0eb66afe9a9c4d48",
         "type": "github"
       },
       "original": {
@@ -654,18 +660,15 @@
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
-        "hyprvoice": "hyprvoice",
         "idris-pkgs": "idris-pkgs",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "rofi": "rofi",
-        "stylix": "stylix",
-        "urlq": "urlq"
+        "stylix": "stylix"
       }
     },
     "sorta": {
       "inputs": {
-        "flake-utils": "flake-utils_7",
+        "flake-utils": "flake-utils_8",
         "nixpkgs": [
           "idris-pkgs",
           "nixpkgs"
@@ -984,26 +987,27 @@
       "inputs": {
         "home-manager": "home-manager_3",
         "nixpkgs": [
+          "idris-pkgs",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1772595706,
-        "narHash": "sha256-cRys9PrybhThxBumpktcUp/esonx3pI2ypNvSbdT8mg=",
+        "lastModified": 1772670505,
+        "narHash": "sha256-RaaRJlR2GTJKm05i61XyIdAXdzgqoks51qPiq/mYZYs=",
         "ref": "refs/heads/main",
-        "rev": "62e672cbe9e682e161390f3df60249c23b3880c4",
-        "revCount": 18,
+        "rev": "425b43d555079522ff314ff1aa5d1e4d183e413a",
+        "revCount": 19,
         "type": "git",
-        "url": "file:../fun/video-downloader"
+        "url": "file:/home/hippoid/fun/video-downloader"
       },
       "original": {
         "type": "git",
-        "url": "file:../fun/video-downloader"
+        "url": "file:/home/hippoid/fun/video-downloader"
       }
     },
     "videoChapter": {
       "inputs": {
-        "flake-utils": "flake-utils_8",
+        "flake-utils": "flake-utils_9",
         "nixpkgs": [
           "idris-pkgs",
           "nixpkgs"
@@ -1025,7 +1029,7 @@
     },
     "zettel": {
       "inputs": {
-        "flake-utils": "flake-utils_9",
+        "flake-utils": "flake-utils_10",
         "nixpkgs": [
           "idris-pkgs",
           "nixpkgs"

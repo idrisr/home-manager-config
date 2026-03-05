@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.hyprvoice.homeManagerModules.default
+    inputs.idris-pkgs.homeManagerModules.hyprvoice
   ];
 
   services.hyprvoice.enable = true;

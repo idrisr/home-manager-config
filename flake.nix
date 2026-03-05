@@ -3,30 +3,19 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    urlq = {
-      url = "git+file:../fun/video-downloader";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprvoice = {
-      url = "git+file:../fun/hyprvoice";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     idris-pkgs = {
       url = "github:idrisr/idris-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rofi = {
-      url = "github:idrisr/rofi-picker/haskell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -78,9 +67,6 @@
       linuxOverlays = [
         (import ./modules/qrcp "6969")
         (import ./modules/kdenlive)
-        inputs.urlq.overlays.default
-        inputs.rofi.overlays.all
-        inputs.hyprvoice.overlays.default
       ];
 
       overlayListFor = system:

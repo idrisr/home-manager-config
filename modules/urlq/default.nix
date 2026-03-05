@@ -1,7 +1,7 @@
 { config, inputs, ... }:
 {
   imports = [
-    inputs.urlq.lib.urlq.homeManagerModule
+    inputs.idris-pkgs.homeManagerModules.urlq
   ];
 
   services.urlq = {
