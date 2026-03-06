@@ -34,6 +34,7 @@ in
       ./dadbod.nix
       ./dap.nix
       ./dot.nix
+      ./nix.nix
       ./emmet.nix
       ./fugitive.nix
       ./fzf.nix
@@ -69,7 +70,7 @@ in
     vimAlias = true;
 
     extraPlugins =
-      (with pkgs.vimPlugins; [
+      with pkgs.vimPlugins; [
         fzf-vim # switch to fzf-lua?
         img-clip-nvim
         julia-vim
@@ -80,13 +81,11 @@ in
         nvim-treesitter-parsers.yuck
         outline-nvim
         pkgs.zettel
-      ])
-      ++ (with pkgs.vimPlugins; [
         telescope_hoogle
         vim-pencil
         vim-sqls
         yuck-vim
-      ]);
+      ];
 
     extraConfigVim = concatFiles [ ./vimrc ];
     extraConfigLua = concatFiles [
