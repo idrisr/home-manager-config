@@ -207,6 +207,20 @@ in
           definedAliases = [ "ho" ];
         };
 
+        "noogle" = {
+          urls = [{
+            template = "https://noogle.dev/q";
+            params = [
+              {
+                name = "term";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+          definedAliases = [ "nl" ];
+        };
+
+
         "home-manager" = {
           urls = [{
             template = "https://home-manager-options.extranix.com";
