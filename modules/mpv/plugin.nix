@@ -1,5 +1,3 @@
-# { pkgs ? import <nixpkgs> { } }:
-
 { stdenvNoCC, fetchFromGitHub }:
 stdenvNoCC.mkDerivation {
   pname = "speed-script";

@@ -10,7 +10,9 @@ in {
       save-position-on-quit = true;
       keep-open = true;
       gpu-api = "opengl";
+      hr-seek = true;
+      hr-seek-framedrop = false;
     };
-    scripts = with pkgs.mpvScripts; [ mpv-speed-script ];
+    scripts = [ mpv-speed-script ];
   };
 }
