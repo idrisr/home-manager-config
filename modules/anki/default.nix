@@ -4,7 +4,7 @@
     programs.anki = {
       addons = [ pkgs.ankiAddons.anki-connect ];
       enable = true;
-      sync = {
+      profiles."User 1".sync = {
         url = "http://fft:27701";
         username = "hippoid";
         autoSync = true;
