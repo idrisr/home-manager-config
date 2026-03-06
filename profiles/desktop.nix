@@ -14,6 +14,7 @@
     ../modules/pandoc
     ../modules/qutebrowser
     ../modules/vscode
+    ../modules/television
     ../modules/yazi
     ../modules/yt-dlp
     ../modules/zoxide
