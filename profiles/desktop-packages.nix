@@ -31,6 +31,7 @@ let
     gimp
     gradia
     inotify-tools
+    immich-cli
     # kdePackages.krohnkite
     kdePackages.kdenlive
     keepassxc

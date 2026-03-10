@@ -3,7 +3,8 @@ with lib;
 let
   cfg = config.programs.vifm;
   configPath = "${config.xdg.configHome}/vifm/vifmrc";
-in {
+in
+{
   options = {
     programs.vifm = {
       marks = mkOption {
@@ -43,22 +44,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home = let
-      f = k: v:
-        (if (isBool v) then
-          if v then "set ${k}" else "set no${k}"
-        else
-          "set ${k}=${toString v}");
-      g = k: v: "mark ${k} ${v}";
-      marks = concatLines (attrsets.mapAttrsToList g cfg.marks);
-      opts = concatLines (attrsets.mapAttrsToList f cfg.opts);
-    in mkMerge [
-      { packages = [ cfg.package ]; }
-      (mkIf (cfg.marks != { } || marks != { } || opts != { }) {
-        file."${configPath}".text =
-          concatStringsSep "\n" [ marks opts cfg.extraConfig ];
-        sessionVariables."VIFM" = configPath;
-      })
-    ];
+    home =
+      let
+        f = k: v:
+          (if (isBool v) then
+            if v then "set ${k}" else "set no${k}"
+          else
+            "set ${k}=${toString v}");
+        g = k: v: "mark ${k} ${v}";
+        marks = concatLines (attrsets.mapAttrsToList g cfg.marks);
+        opts = concatLines (attrsets.mapAttrsToList f cfg.opts);
+      in
+      mkMerge [
+        { packages = [ cfg.package ]; }
+        (mkIf (cfg.marks != { } || marks != { } || opts != { }) {
+          file."${configPath}".text =
+            concatStringsSep "\n" [ marks opts cfg.extraConfig ];
+          sessionVariables."VIFM" = configPath;
+        })
+      ];
   };
 }

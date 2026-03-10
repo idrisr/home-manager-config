@@ -1,0 +1,31 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Source Code Pro;
+}
+
+window#waybar {
+    background: #16191C;
+    color: #AAB2BF;
+}
+
+#workspaces button {
+    padding: 0 5px;
+}
+
+* {
+  font-family: "Rubik", "JetBrainsMono Nerd Font Propo", "Noto Sans CJK JP", "Noto Sans CJK KR";
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to { opacity: 0; }
+}

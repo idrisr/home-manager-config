@@ -2,7 +2,8 @@
 let
   homeDir = config.home.homeDirectory;
   isLinux = pkgs.stdenv.isLinux;
-in {
+in
+{
   config = {
     programs.vifm = {
       enable = false;
@@ -53,7 +54,8 @@ in {
         ++ lib.optionals (graphical && isLinux) (
           let
             vp = "${pkgs.visualpreview}/bin/visualpreview";
-          in [
+          in
+          [
             ''
               filextype *wav,*mp3,*mkv,*webm,*mp4,*mov,*avi,*m4v ${pkgs.mpv}/bin/mpv --force-window %f 2>/dev/null &
               filextype <image/*> {View in sxiv} sxiv -ia %f &

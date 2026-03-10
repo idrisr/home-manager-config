@@ -1,49 +1,30 @@
 { pkgs, lib, ... }:
 {
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = ''
-      * {
-        border: none;
-        border-radius: 0;
-        font-family: Source Code Pro;
-      }
-
-      window#waybar {
-        background: #16191C;
-        color: #AAB2BF;
-      }
-
-      #workspaces button {
-        padding: 0 5px;
-      }
-
-      * {
-        font-family: "FiraCode Nerd Font", "Symbols Nerd Font Mono";
-      }
-
-    '';
+    style = builtins.readFile ./config.css;
 
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
         height = 10;
-        output = [
-          "eDP-1"
-          "DP-1"
-        ];
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [
-          "systemd-failed-units"
-          "battery"
-          "wireplumber"
-          "privacy"
-          "disk"
-          "temperature"
-        ];
-        modules-right = [ "cpu" "clock" ];
+        output = [ "eDP-1" "DP-1" ];
+        modules-left = [ "clock" "hyprland/workspaces" ];
+        modules-center =
+          [
+            "systemd-failed-units"
+            "battery"
+            "wireplumber"
+            "privacy"
+            "disk"
+            "temperature"
+            "cpu"
+          ];
+
+        modules-right = [ "time" "network" "tray" ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
@@ -62,17 +43,30 @@
           thermal-zone = 5;
         };
 
+        network = {
+          interface = "wlp170s0";
+          format = "{ifname}";
+          format-wifi = "{ipaddr} {signalStrength}%";
+          format-ethernet = "{ipaddr}/{cidr} 󰊗";
+          format-disconnected = "";
+          tooltip-format = "{ifname} via {gwaddr} 󰊗";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-ethernet = "{ifname} ";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+        };
+
         battery = {
           interval = 60;
           states = {
             warning = 30;
-            critical = 15;
+            critical = 20;
           };
           format = "BATT:{capacity}%";
         };
 
         clock = {
-          format = "{:%H:%M}  ";
+          format = "{:%H:%M}";
           format-alt = "{:%A; %B %d, %Y (%R)}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
@@ -81,7 +75,7 @@
             weeks-pos = "right";
             on-scroll = 1;
             format = {
-              months = "<span color='#ffead3'><b>{}</b></span>";
+              months = "<span color = '#ffead3'><b>{}</b></span>";
               days = "<span color='#ecc6d9'><b>{}</b></span>";
               weeks = "<span color='#99ffdd'><b>W{}</b></span>";
               weekdays = "<span color='#ffcc66'><b>{}</b></span>";

@@ -1,13 +1,16 @@
 { pkgs, lib, ... }:
 let
   pkgIfExists = name: if builtins.hasAttr name pkgs then [ pkgs.${name} ] else [ ];
-in {
+in
+{
   config = {
     home.packages =
       pkgIfExists "ouch"
       ++ pkgIfExists "pdftc"
       ++ pkgIfExists "poppler-utils";
+
     programs.yazi = {
+      shellWrapperName = "y";
       plugins = {
         piper = pkgs.yaziPlugins.piper;
         ouch = pkgs.yaziPlugins.ouch;
@@ -19,7 +22,7 @@ in {
       settings = {
         mgr = {
           show_hidden = true;
-          ratio = [ 1 2 4 ];
+          ratio = [ 1 3 3 ];
           preview = {
             max_width = 1200;
             max_height = 1000;
