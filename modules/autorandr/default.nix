@@ -34,9 +34,10 @@ let
     rate = "60.00";
     rotate = "normal";
   };
-in {
+in
+{
   programs.autorandr = {
-    enable = true;
+    enable = false;
     hooks = {
       predetect = { };
       preswitch = { };

@@ -45,7 +45,6 @@
       baseOverlays = [
         stdenvSystemAlias
         inputs.idris-pkgs.overlays.default
-        (import ./modules/qrcp "6969")
         (import ./modules/kdenlive)
       ];
 
