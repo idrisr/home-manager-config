@@ -94,10 +94,7 @@
     {
       inherit overlays;
 
-      homeConfigurations = homeConfigurationsBySystem // {
-        graphical = homeConfigurationsBySystem."graphical-x86_64-linux";
-        headless = homeConfigurationsBySystem."headless-x86_64-linux";
-      };
+      homeConfigurations = homeConfigurationsBySystem;
 
       packages = nixpkgs.lib.genAttrs systems (system: {
         headless = homeConfigurationsBySystem."headless-${system}".activationPackage;

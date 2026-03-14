@@ -2,14 +2,13 @@
   description = "A nixvim configuration";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = { nixvim, flake-utils, nixpkgs, ... }:
+  outputs = { nixvim, nixpkgs, ... }:
     let
-      system = flake-utils.lib.system.x86_64-linux;
+      system = "x86_64-linux";
       nixvimLib = nixvim.lib.${system};
       pkgs = import nixpkgs {
         inherit system;

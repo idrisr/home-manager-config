@@ -1,1 +1,1 @@
-{ plugins.neo-tree = { enable = false; }; }
+{ plugins.neo-tree = { enable = true; }; }

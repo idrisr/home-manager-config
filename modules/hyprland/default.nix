@@ -60,7 +60,6 @@
         "$mod, r, workspace, 4"
         "$mod, t, workspace, 5"
         "$mod, j, cyclenext"
-        # "$mod, j, focuscurrentorlast"
         "$mod, f, fullscreen, 1"
         "$mod, l, resizeactive, 40 0"
         "$mod, h, resizeactive, -40 0"
@@ -68,7 +67,6 @@
         "$mod, p, exec, wofi --show drun"
         "$mod shift, n, exec, flameshot gui"
 
-        "$mod shift, b, exec, ${lib.getExe pkgs.qutebrowser}"
         "$mod shift, v, exec, ${lib.getExe pkgs.firefox}"
         "$mod shift, k, exec, ${lib.getExe pkgs.kitty}"
         "$mod, s, exec, ${lib.getExe pkgs.gradia}  --screenshot=INTERACTIVE"
