@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
+
 let
   concatFiles = files:
     let
@@ -54,6 +55,7 @@ in
       ./project.nix
       ./render-markdown.nix
       ./slime.nix
+      ./softpencil.nix
       ./surround.nix
       ./telescope.nix
       ./treesitter.nix
@@ -77,6 +79,7 @@ in
         kmonad-vim
         lean-nvim
         matchit-zip
+        mini-nvim
         nvim-dap-ui
         nvim-treesitter-parsers.yuck
         outline-nvim
