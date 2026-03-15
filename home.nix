@@ -15,6 +15,19 @@ let lib = pkgs.lib; in
   ];
 
   config = {
+    nix.registry.idris.flake = inputs.idris-pkgs;
+    nix.registry.idris-pkgs.flake = inputs.idris-pkgs;
+    nix.registry.llm.to = {
+      type = "github";
+      owner = "numtide";
+      repo = "llm-agents.nix";
+    };
+    nix.registry.ros.to = {
+      type = "github";
+      owner = "lopsided98";
+      repo = "nix-ros-overlay";
+    };
+
     programs.home-manager.enable = true;
   };
 }
