@@ -25,6 +25,7 @@
     ../modules/flameshot
     ../modules/hyprcursor
     ../modules/hyprland
+    ../modules/hyprpaper
     ../modules/hyprvoice
     ../modules/obs
     ../modules/opentablet

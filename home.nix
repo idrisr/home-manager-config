@@ -17,11 +17,14 @@ let lib = pkgs.lib; in
   config = {
     nix.registry.idris.flake = inputs.idris-pkgs;
     nix.registry.idris-pkgs.flake = inputs.idris-pkgs;
+    nix.registry.np.flake = inputs.nixpkgs;
+
     nix.registry.llm.to = {
       type = "github";
       owner = "numtide";
       repo = "llm-agents.nix";
     };
+
     nix.registry.ros.to = {
       type = "github";
       owner = "lopsided98";
