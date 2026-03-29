@@ -7,6 +7,7 @@ let
       k = builtins.concatStringsSep "\n" ([ " " ] ++ j);
     in
     k;
+  nvimPython = pkgs.python3.withPackages (p: [ p.pynvim ]);
   vim-sqls = pkgs.vimUtils.buildVimPlugin {
     name = "sqls";
     src = pkgs.fetchFromGitHub {
@@ -70,6 +71,10 @@ in
 
     viAlias = true;
     vimAlias = true;
+    withPython3 = true;
+    extraPython3Packages = p: [ p.pynvim ];
+    extraPackages = [ nvimPython ];
+    globals.python3_host_prog = "${nvimPython}/bin/python3";
 
     extraPlugins =
       with pkgs.vimPlugins; [

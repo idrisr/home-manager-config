@@ -67,7 +67,7 @@
   ];
 
   plugins.obsidian = {
-    enable = true;
+    enable = false;
     settings = {
       frontmatter.enabled = false;
       legacy_commands = false;
