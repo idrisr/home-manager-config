@@ -3,6 +3,7 @@
     ./base.nix
     ../modules/alacritty
     ../modules/anki
+    ../modules/beets
     ../modules/ctags
     ../modules/fabric
     ../modules/github
