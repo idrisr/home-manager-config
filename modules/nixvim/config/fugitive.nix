@@ -1,8 +1,8 @@
 {
-  plugins.fugitive.enable = false;
+  plugins.fugitive.enable = true;
 
   plugins.gitsigns.enable = true;
-  plugins.neogit.enable = true;
+  plugins.neogit.enable = false;
   plugins.diffview.enable = true;
   keymaps = [
     {
