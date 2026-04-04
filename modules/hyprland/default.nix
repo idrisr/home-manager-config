@@ -29,6 +29,7 @@
         "match:class ^(be.alexandervanhee.gradia)$, workspace 4"
         "match:class ^(org.keepassxc.keepassxc)$, workspace 4"
         "match:class ^(signal)$, workspace 4"
+        "match:title ^(GAViewer)$, workspace 4"
         "match:class ^(org.pulseaudio.pavucontrol)$, workspace 5"
         "match:class ^(reaper)$, workspace 5"
         "match:class ^(org.kde.kdenlive)$, workspace 5"
