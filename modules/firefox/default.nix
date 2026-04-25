@@ -151,6 +151,21 @@ in
           definedAliases = [ "np" ];
         };
 
+
+        "numpy" = {
+          urls = [{
+            template = "https://numpy.org/doc/stable/search.html";
+            params = [
+              {
+                name = "q";
+                value = "{searchTerms}";
+              }
+            ];
+          }];
+
+          definedAliases = [ "nu" ];
+        };
+
         "Chicago Public Library" = {
           urls = [{
             template = "https://chipublib.bibliocommons.com/v2/search";
