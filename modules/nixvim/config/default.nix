@@ -9,7 +9,8 @@ let
     k;
   nvimPython = pkgs.python3.withPackages (p: [ p.pynvim ]);
   vim-sqls = pkgs.vimUtils.buildVimPlugin {
-    name = "sqls";
+    pname = "sqls";
+    version = "git-9455c25";
     src = pkgs.fetchFromGitHub {
       repo = "sqls.vim";
       owner = "sqls-server";
