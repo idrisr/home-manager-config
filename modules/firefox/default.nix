@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 let
   addonId = "urlq@idrisraja.com";
@@ -21,8 +21,10 @@ let
 in
 {
 
+
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.hippoid = {
       search.engines = {
         "arch wiki" = {
