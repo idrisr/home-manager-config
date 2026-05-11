@@ -24,8 +24,9 @@ in
 
   programs.firefox = {
     enable = true;
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
+    configPath = ".mozilla/firefox";
     profiles.hippoid = {
+      path = "g13geog9.default";
       search.engines = {
         "arch wiki" = {
           ar = "https://wiki.archlinux.org/index.php?search={}";

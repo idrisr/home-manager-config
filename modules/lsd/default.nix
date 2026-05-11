@@ -4,7 +4,7 @@
       enable = true;
       settings = {
         date = "relative";
-        total-size = true;
+        total-size = false;
       };
     };
   };
